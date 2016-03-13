@@ -7,6 +7,6 @@
 	<color name="button_focus">#FF2A9AEB</color>
 	<color name="button_default">#FFA8A8A8</color>
 	<color name="button_text">#FFFFFFFF</color>
-	<color name="key_text">#FF000000</color>
+	<color name="key_text">#FFFFFFFF</color>
 	<color name="key_shadow">#FFFFFFFF</color>
 </resources>
