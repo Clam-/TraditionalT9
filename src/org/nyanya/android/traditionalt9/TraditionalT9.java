@@ -596,6 +596,7 @@ public class TraditionalT9 extends InputMethodService implements
 	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
 		// consume since we will assume we have already handled the long press
 		// if greater than 1
+		super.onKeyLongPress (keyCode, event);
 		if (event.getRepeatCount() != 1) {
 			return true;
 		}
@@ -603,21 +604,28 @@ public class TraditionalT9 extends InputMethodService implements
 		// Log.d("onLongPress", "LONG PRESS: " + keyCode);
 		// HANDLE SPECIAL KEYS
 		if (keyCode == KeyMap.POUND) {
-			commitReset();
+//			commitReset();
 			// do default action or insert new line
-			if (!sendDefaultEditorAction(true)) {
-				onText("\n");
-			}
-			return true;
-		} else if (keyCode == KeyMap.STAR) {
-			if (mKeyMode != MODE_NUM) {
-				if (mLangsAvailable.length > 1) {
+//			if (!sendDefaultEditorAction(true)) {
+//				onText("\n");
+//			}
 					nextLang();
-				} else {
-					showSmileyPage(); // TODO: replace with lang select if lang thing
-				}
-				return true;
+		} else if (keyCode == KeyMap.STAR) {
+			if (mKeyMode == MODE_LANG) {
+				if (mWordFound) {
+					showAddWord();
+			} else {
+				              showSmileyPage(); 
 			}
+			}
+//			if (mKeyMode != MODE_NUM) {
+//				if (mLangsAvailable.length > 1) {
+
+//				} else {
+//					showSmileyPage(); // TODO: replace with lang select if lang thing
+//				}
+				return true;
+//			}
 
 		} else if (keyCode == KeyMap.SOFT_LEFT) {
 			if (interfacehandler != null) {
@@ -631,7 +639,7 @@ public class TraditionalT9 extends InputMethodService implements
 				}
 			}
 
-		} else if (keyCode == KeyMap.SOFT_RIGHT) {
+		} else if (keyCode == KeyMap.SOFT_RIGHT ) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
 			}
@@ -1069,7 +1077,8 @@ public class TraditionalT9 extends InputMethodService implements
 					if (mComposing.length() > 0) {
 						commitTyped();
 					}
-					onText(" ");
+//					onText(" ");
+					showSymbolPage();
 				} else {
 					// do things
 					if (interfacehandler != null) {
@@ -1085,7 +1094,9 @@ public class TraditionalT9 extends InputMethodService implements
 			case MODE_TEXT:
 				t9releasehandler.removeCallbacks(mt9release);
 				if (keyCode == KeyMap.POUND) {
-					keyCode = 10;
+//					keyCode = 10;
+					showSymbolPage();
+					break;
 				} else {
 					keyCode = keyCode - KeyEvent.KEYCODE_0;
 				}
@@ -1199,7 +1210,14 @@ public class TraditionalT9 extends InputMethodService implements
 					}
 				}
 				if (keyCode == KeyMap.DPAD_CENTER) {
-					handleMidButton();
+//					handleMidButton();
+// patch begin
+					commitReset();
+					// do default action or insert new line
+					if (!sendDefaultEditorAction(true)) {
+							onText("\n");
+					}
+// patch end
 					return true;
 				} else {// Send stored event to input connection then pass current
 					// event onto super
@@ -1253,16 +1271,30 @@ public class TraditionalT9 extends InputMethodService implements
 	}
 
 	private void nextLang() {
-		mLangIndex++;
-		if (mLangIndex == mLangsAvailable.length) {
-			mLangIndex = 0;
+			mLangIndex++;
+			if (mLangIndex == mLangsAvailable.length) {
+				mLangIndex = 0;
+			}
+			if (mLangIndex == 0) {
+				switch (mKeyMode) {
+					case MODE_TEXT:
+						mKeyMode = MODE_NUM;
+						break;
+					case MODE_LANG:
+						mKeyMode = MODE_TEXT;
+						break;
+					case MODE_NUM:
+						mKeyMode = MODE_LANG;
+						break;
+					}
+
+			}
+			mLang = mLangsAvailable[mLangIndex];
+			updateKeyMode();
+			if (modeNotification != null) {
+				modeNotify(getResources().getStringArray(R.array.pref_lang_titles)[mLang.index]);
+			}
 		}
-		mLang = mLangsAvailable[mLangIndex];
-		updateKeyMode();
-		if (modeNotification != null) {
-			modeNotify(getResources().getStringArray(R.array.pref_lang_titles)[mLang.index]);
-		}
-	}
 
 	private void resetKeyMode() {
 		charReset();
