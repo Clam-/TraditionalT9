@@ -11,10 +11,10 @@
     <string name="ime_name">Клавиатура T9</string>
     <string name="ime_number">Цифры</string>
     <string name="main_left_addword">Добавить слово</string>
-    <string name="main_left_insert">вставить символ</string>
+    <string name="main_left_insert">Вставить символ</string>
     <string name="main_left_notfound">Добавить слово?</string>
     <string name="main_mid">Готово</string>
-    <string name="main_mid_commit">Commit</string>
+    <string name="main_mid_commit">Внести</string>
     <string name="main_right_lower">Изменить IME</string>
     <string name="main_right_upper">Режим ввода</string>
     <string name="pref_backup_noext">Ошибка: Внешняя память недоступна. Резервное копирование невозможно невозможно.</string>
@@ -36,7 +36,7 @@
     <string name="pref_nukingdict">Очистка словаря… Пожалуйста, подождите…</string>
     <string name="pref_querytest">Query test</string>
     <string name="pref_restore_noext">Ошибка: Внешняя память недоступна. Восстановление невозможно.</string>
-    <string name="pref_restore_nofile">Ошибка: Файл встановления не найден.</string>
+    <string name="pref_restore_nofile">Ошибка: Файл восстановления не найден.</string>
     <string name="pref_restore_title">Восстановить базу данных IME</string>
     <string name="pref_restore_warn">При восстановлении существующая база данных будет очищена. Если это нежелательно, то сначала выберите \"%1$s\" перед использованием этой опции.</string>
     <string name="pref_restoredict">Сохранить словарь</string>
@@ -44,8 +44,8 @@
     <string name="pref_testfunc">Test func</string>
     <string name="ricon_desc">Hold Icon</string>
     <string name="pref_help">О программе</string>
-    <string name="symbol_next">Следущая страница</string>
-    <string name="symbol_prev">Предыдущая страница</string>
+    <string name="symbol_next">Вперед</string>
+    <string name="symbol_prev">Назад</string>
 
 	<string name="symbol_insert">Вставить символ</string>
 	<string name="smiley_insert">Вставить смайл</string>
@@ -60,10 +60,10 @@
 	<string name="pref_loaduser_notfound"> Ошибка. \n Словарь %1$s не найден. </string>
 	<string name="pref_mode_notify_subtitle">Используется для озвучивания изменения режима ввода.</string>
 	<string name="pref_mode_notify">Режим уведомления</string>
-	<string name="database_settings_notready">Database unavailable. Using default settings.</string>
-	<string name="pref_reloadKeys">Force reload of key overrides</string>
+	<string name="database_settings_notready">База данных недоступна.\nИспользуются значения по-умолчанию.</string>
+	<string name="pref_reloadKeys">Принудительная загрузка назначений кнопок</string>
 
     <string name="title_activity_add_word">Добавить слово</string>
-    <string name="traditionalt9_settings">Traditional T9 настройки</string>
+    <string name="traditionalt9_settings">Настройки Traditional T9 </string>
 
 </resources>
