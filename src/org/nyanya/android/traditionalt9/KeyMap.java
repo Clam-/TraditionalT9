@@ -25,6 +25,7 @@ public class KeyMap {
 	public static int ENTER = KeyEvent.KEYCODE_ENTER;
 	public static int STAR = KeyEvent.KEYCODE_STAR;
 	public static int POUND = KeyEvent.KEYCODE_POUND;
+	public static int TAB = KeyEvent.KEYCODE_TAB;
 	static {
 		setKeys();
 	}
@@ -72,6 +73,8 @@ public class KeyMap {
 									STAR = Integer.parseInt(ws[1]);
 								} else if (ws[0].equals("POUND")) {
 									POUND = Integer.parseInt(ws[1]);
+								} else if (ws[0].equals("TAB")) {
+									TAB = Integer.parseInt(ws[1]);
 								}
 							} catch (NumberFormatException _ignore) {
 								Log.w("T9.KeyMap", "Invalid number found");
