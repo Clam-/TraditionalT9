@@ -41,6 +41,7 @@ public class InterfaceHandler implements View.OnClickListener, View.OnLongClickL
 			id = R.id.main_left;
 			break;
 		case KeyEvent.KEYCODE_SOFT_RIGHT:
+		case KeyEvent.KEYCODE_TAB:
 			id = R.id.main_right;
 			break;
 		case KeyEvent.KEYCODE_DPAD_CENTER:
