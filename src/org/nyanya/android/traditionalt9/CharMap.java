@@ -37,7 +37,7 @@ public class CharMap {
 		enMap.put('t', 8); enMap.put('u', 8); enMap.put('û', 6); enMap.put('ü', 8);
 		enMap.put('v', 8); enMap.put('8', 8); enMap.put('w', 9);
 		enMap.put('x', 9); enMap.put('y', 9); enMap.put('z', 9);
-		enMap.put('9', 9); enMap.put(' ', 0); enMap.put('+', 0); enMap.put('0', 0);
+		enMap.put('9', 9); enMap.put('+', 0); enMap.put('0', 0);
 		// add extra characters for German and French maps.
 		enMap.put('€', 1); enMap.put('ß', 7); // German chars
 		enMap.put('î', 4); enMap.put('ù', 8); // French chars
@@ -70,7 +70,6 @@ public class CharMap {
 		ruMap.put('8', 8);
 		ruMap.put('ь', 9); ruMap.put('э', 9); ruMap.put('ю', 9); ruMap.put('я', 9);
 		ruMap.put('9', 9);
-		ruMap.put(' ', 0);
 		ruMap.put('+', 0);
 		ruMap.put('0', 0);
 		CHARTABLE.add(1, Collections.unmodifiableMap(ruMap));
@@ -80,23 +79,23 @@ public class CharMap {
 		CHARTABLE.add(4, Collections.unmodifiableMap(endefritmap));
 	}
 
-	protected static final char[][] ENT9TABLE = { { ' ', '0', '+' },
+	protected static final char[][] ENT9TABLE = { { '0', '+' },
 		{ '.', ',', '?', '!', '"', '/', '-', '@', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
 		{ 'a', 'b', 'c', 'A', 'B', 'C', '2' }, { 'd', 'e', 'f', 'D', 'E', 'F', '3' },
 		{ 'g', 'h', 'i', 'G', 'H', 'I', '4' }, { 'j', 'k', 'l', 'J', 'K', 'L', '5' },
 		{ 'm', 'n', 'o', 'M', 'N', 'O', '6' }, { 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S', '7' },
 		{ 't', 'u', 'v', 'T', 'U', 'V', '8' }, { 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z', '9' },
-		{ ' ', '\n' } };
-	protected static final char[][] RUT9TABLE = { { ' ', '0', '+' },
-		{ '.', ',', '?', '!', '"', '/', '-', '@', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
+	protected static final char[][] RUT9TABLE = { { '0', '+' },
+		{ '.', ',', '?', '!', '"', '/', '-', '@', '$', '%', '&', '*', '#',  '(', ')', '_', '1' },
 		{ 'а', 'б', 'в', 'г', 'А', 'Б', 'В', 'Г', '2' }, { 'д', 'е', 'ё', 'ж', 'з', 'Д', 'Е', 'Ё', 'Ж', 'З', '3' },
 		{ 'и', 'й', 'к', 'л', 'И', 'Й', 'К', 'Л', '4' }, { 'м', 'н', 'о', 'п', 'М', 'Н', 'О', 'П', '5' },
 		{ 'р', 'с', 'т', 'у', 'Р', 'С', 'Т', 'У', '6' }, { 'ф', 'х', 'ц', 'ч', 'Ф', 'Х', 'Ц', 'Ч', '7' },
 		{ 'ш', 'щ', 'ъ', 'ы', 'Ш', 'Щ', 'Ъ', 'Ы', '8' }, { 'ь', 'э', 'ю', 'я', 'Ь', 'Э', 'Ю', 'Я', '9' },
-		{ ' ', '\n' } };
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
 	protected static final char[][] DET9TABLE = {
-		{ ' ', '+', '0' },
-		{ '.', ',', '?', '!', ':', ';', '"', '\'', '-', '@', '^', '€', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
+		{ '0', '+' },
+		{ '.', ',', '?', '!', ':', ';', '"', '\'', '-', '@', '^', '€', '$', '%', '&', '*', '#',  '(', ')', '_', '1' },
 		{ 'a', 'b', 'c', 'A', 'B', 'C', 'ä', 'Ä','á', 'â', 'à', 'å', 'ç', 'Á', 'Â', 'À', 'Å', 'Ç', '2' },
 		{ 'd', 'e', 'f', 'D', 'E', 'F', 'é','ë','è','ê', 'É', 'Ë', 'È', 'Ê', '3' },
 		{ 'g', 'h', 'i', 'G', 'H', 'I', 'í', 'ï', 'Í', 'Ï', '4' },
@@ -105,11 +104,11 @@ public class CharMap {
 		{ 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S', 'ß', '7' },
 		{ 't', 'u', 'v', 'T', 'U', 'V', 'ü', 'Ü', 'û', 'Û', '8' },
 		{ 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z', '9' },
-		{ '\n' } };
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
 
 	protected static final char[][] FRT9TABLE = {
-		{ ' ', '+', '0' },
-		{ '.', ',', '?', '!', ':', ';', '"', '/', '-', '@', '^', '€', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
+		{ '0', '+' },
+		{ '.', ',', '?', '!', ':', ';', '"', '/', '-', '@', '^', '€', '$', '%', '&', '*', '#',  '(', ')', '_', '1' },
 		{ 'a', 'b', 'c', 'A', 'B', 'C', 'ä', 'Ä','á', 'â', 'à', 'å', 'ç', 'Á', 'Â', 'À', 'Å', 'Ç', '2' },
 		{ 'd', 'e', 'f', 'D', 'E', 'F', 'é','ë','è','ê', 'É', 'Ë', 'È', 'Ê', '3' },
 		{ 'g', 'h', 'i', 'G', 'H', 'I', 'í', 'ï', 'Í', 'Ï', '4' },
@@ -118,23 +117,25 @@ public class CharMap {
 		{ 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S', 'ß', '7' },
 		{ 't', 'u', 'v', 'T', 'U', 'V', 'ü', 'Ü', 'û', 'Û', '8' },
 		{ 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z', '9' },
-		{ '\n' } };
-		
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
+
 	protected static final char[][] ITT9TABLE = {
-		{ ' ', '+', '0' },
-		{ '.', ',', '?', '!', ':', ';', '"', '/', '-', '@', '^', '€', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
+		{ '+', '0' },
+		{ '.', ',', '?', '!', ':', ';', '"', '/', '-', '@', '^', '€', '$', '%', '&', '*', '#',  '(', ')', '_', '1' },
 		{ 'a', 'b', 'c', 'A', 'B', 'C', 'à', 'À', '2' }, { 'd', 'e', 'f', 'D', 'E', 'F', 'é', 'è', 'É', 'È', '3' },
 		{ 'g', 'h', 'i', 'G', 'H', 'I', 'ì', 'Ì', '4' }, { 'j', 'k', 'l', 'J', 'K', 'L', '5' },
 		{ 'm', 'n', 'o', 'M', 'N', 'O', 'ò', 'Ò', '6' }, { 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S', '7' },
 		{ 't', 'u', 'v', 'T', 'U', 'V', 'ù', 'Ù', '8' }, { 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z', '9' },
-		{ '\n' } };
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
+
 	protected static final char[][][] T9TABLE = { ENT9TABLE, RUT9TABLE, DET9TABLE, FRT9TABLE, ITT9TABLE };
 
-	protected static final int[] ENT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0 };
-	protected static final int [] RUT9CAPSTART = {0, 0, 4, 5, 4, 4, 4, 4, 4, 4, 0};
-	protected static final int[] DET9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0 };
-	protected static final int[] FRT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0 };
-	protected static final int[] ITT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0 };
+	// last 2 don't matter, are for spaceOnZero extra 'slots' 0 position, and 10 position
+	protected static final int[] ENT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,   0, 0 };
+	protected static final int[] RUT9CAPSTART = { 0, 0, 4, 5, 4, 4, 4, 4, 4, 4, 0,   0, 0 };
+	protected static final int[] DET9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,   0, 0 };
+	protected static final int[] FRT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,   0, 0 };
+	protected static final int[] ITT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,   0, 0 };
 	protected static final int[][] T9CAPSTART = {ENT9CAPSTART, RUT9CAPSTART, DET9CAPSTART, FRT9CAPSTART, ITT9CAPSTART};
 
 	protected static String getStringSequence(String word, LANGUAGE lang) {
