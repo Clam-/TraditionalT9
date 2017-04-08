@@ -19,7 +19,7 @@
 		id="pref_spaceOnZero"
 		title="@string/pref_spaceOnZero"
 		summary="@string/pref_keyRemapSum"
-		defaultValue="false"
+		defaultValue="true"
 		/>
 	<SettingCheck
 		id="pref_mode_notify"
