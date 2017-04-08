@@ -633,6 +633,7 @@ public class TraditionalT9 extends InputMethodService implements
 	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
 		// consume since we will assume we have already handled the long press
 		// if greater than 1
+		super.onKeyLongPress (keyCode, event);
 		if (event.getRepeatCount() != 1) {
 			return true;
 		}
@@ -640,22 +641,29 @@ public class TraditionalT9 extends InputMethodService implements
 		// Log.d("onLongPress", "LONG PRESS: " + keyCode);
 		// HANDLE SPECIAL KEYS
 		if (keyCode == KeyEvent.KEYCODE_POUND) {
-			commitReset();
-			// do default action or insert new line
-			if (!sendDefaultEditorAction(true)) {
-				onText("\n");
-			}
+			nextLang();
+
+//			commitReset();
+//			// do default action or insert new line
+//			if (!sendDefaultEditorAction(true)) {
+//				onText("\n");
+//			}
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_STAR) {
-			if (mKeyMode != MODE_NUM) {
-				if (mLangsAvailable.length > 1) {
-					nextLang();
-				} else {
-					showSmileyPage(); // TODO: replace with lang select if lang thing
-				}
+			if (mKeyMode == MODE_LANG) {
+				if (mWordFound) {
+					showAddWord();
+			} 
+			} else {
+				    showSmileyPage(); 
+					}
+//			if (mKeyMode != MODE_NUM) {
+//				if (mLangsAvailable.length > 1) {
+//					nextLang();
+//				} else {
+//					showSmileyPage(); // TODO: replace with lang select if lang thing
+//				}
 				return true;
-			}
-
 		} else if (keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
@@ -1126,6 +1134,12 @@ public class TraditionalT9 extends InputMethodService implements
 						commitTyped();
 					}
 					onText(" ");
+//new patch	begin				
+				if ( spaceOnZero && (keyCode == KeyEvent.KEYCODE_POUND) ) {
+						showSymbolPage();
+						break; 
+					}   
+//new patch	end				
 				} else {
 					// do things
 					if (interfacehandler != null) {
@@ -1149,8 +1163,14 @@ public class TraditionalT9 extends InputMethodService implements
 				if (spaceOnZero) {
 					if (keyCode == 0)
 						keyCode = 11;
-					if (keyCode == 10)
-						keyCode = 12;
+					if (keyCode == 10) {
+//new patch begin
+						showSymbolPage();
+						break;
+					}
+//new patch end
+//						keyCode = 12;
+					
 				}
 				//Log.d("handleChar", "Key: " + keyCode + "Previous Key: " + mPrevious + " Index:" + mCharIndex);
 
@@ -1262,7 +1282,14 @@ public class TraditionalT9 extends InputMethodService implements
 					}
 				}
 				if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-					handleMidButton();
+//					handleMidButton();
+// patch begin
+					commitReset();
+					// do default action or insert new line
+					if (!sendDefaultEditorAction(true)) {
+							onText("\n");
+					}
+// patch end
 					return true;
 				} else {// Send stored event to input connection then pass current
 					// event onto super
@@ -1316,10 +1343,27 @@ public class TraditionalT9 extends InputMethodService implements
 	}
 
 	private void nextLang() {
+//patch begin 
+		if (mLangIndex <= 0) {
+				switch (mKeyMode) {
+					case MODE_LANG:
+						mKeyMode = MODE_TEXT;
+						break;
+					case MODE_TEXT:
+						mKeyMode = MODE_NUM;
+						break;
+					case MODE_NUM:
+						mKeyMode = MODE_LANG;
+						break;
+					}
+
+			}
+//patch end
 		mLangIndex++;
 		if (mLangIndex == mLangsAvailable.length) {
 			mLangIndex = 0;
-		}
+			}
+
 		mLang = mLangsAvailable[mLangIndex];
 		updateKeyMode();
 		if (modeNotification != null) {
