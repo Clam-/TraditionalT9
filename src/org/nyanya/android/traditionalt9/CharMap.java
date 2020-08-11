@@ -44,7 +44,32 @@ public class CharMap {
 		enMap.put('ì', 4); enMap.put('ò', 8); // Italian chars
 		Map<Character, Integer> endefritmap = Collections.unmodifiableMap(enMap);
 		CHARTABLE.add(0, endefritmap);
-
+		
+		// Hebrew
+		Map<Character, Integer> enMap = new HashMap<Character, Integer>();
+		enMap.put('.', 1); enMap.put(',', 1); enMap.put('!', 1); enMap.put('?', 1);
+		enMap.put('-', 1); enMap.put('"', 1); enMap.put('\'', 1); enMap.put('@', 1);
+		enMap.put('#', 1); enMap.put('$', 1); enMap.put('%', 1); enMap.put('&', 1);
+		enMap.put('*', 1); enMap.put('(', 1); enMap.put(')', 1); enMap.put(':', 1);
+		enMap.put(';', 1); enMap.put('/', 1); enMap.put('+', 1); enMap.put('=', 1);
+		enMap.put('<', 1); enMap.put('>', 1); enMap.put('^', 1); enMap.put('_', 1);
+		enMap.put('~', 1); enMap.put('1', 1); enMap.put('ד', 2); enMap.put('ה', 2);
+		enMap.put('ו', 2); enMap.put('2', 2); enMap.put('א', 3); enMap.put('ב', 3);
+		enMap.put('ג', 3); enMap.put('3', 3); enMap.put('מ', 4); enMap.put('ם', 4);
+		enMap.put('נ', 4); enMap.put('ן', 4); enMap.put('4', 4); enMap.put('י', 5);
+		enMap.put('כ', 5); enMap.put('ך', 5); enMap.put('ל', 5); enMap.put('5', 5);
+		enMap.put('ז', 6); enMap.put('ח', 6); enMap.put('ט', 6); enMap.put('6', 6);
+		enMap.put('ר', 7); enMap.put('ש', 7); enMap.put('ת', 7); enMap.put('7', 7);
+		enMap.put('צ', 8); enMap.put('ץ', 8); enMap.put('ק', 8); enMap.put('8', 8);
+		enMap.put('ס', 9); enMap.put('ע', 9); enMap.put('פ', 9); enMap.put('ף', 9);
+		enMap.put('9', 9); enMap.put('+', 0); enMap.put('0', 0);
+		// add extra characters for German and French maps.
+		enMap.put('€', 1); enMap.put('*', 7); // German chars
+		enMap.put('æ', 1); enMap.put('ם', 4); enMap.put('!', 8); enMap.put('&', 6);	// French chars
+		enMap.put('ן', 4); enMap.put('ץ', 8); // Italian chars
+		Map<Character, Integer> endefritmap = Collections.unmodifiableMap(enMap);
+		CHARTABLE.add(0, endefritmap);
+		
 		// Russian
 		Map<Character, Integer> ruMap = new HashMap<Character, Integer>();
 		ruMap.put('.', 1); ruMap.put(',', 1); ruMap.put('!', 1); ruMap.put('?', 1);
