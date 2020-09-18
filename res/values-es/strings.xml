@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Traditional T9</string>
+	<string name="ime_name">Traditional T9</string>
+	<string name="ime_number">Números</string>
+	<string name="pref_inputmode">Modo de entrada por defecto</string>
+	<string name="pref_inputmode_desc">Modo por defecto usado para entrada \'normal\' de texto</string>
+	<string name="traditionalt9_settings">Configuración de Traditional T9</string>
+	<string name="main_left_insert">Insertar símbolo</string>
+	<string name="main_left_addword">Agregar palabra</string>
+	<string name="main_mid">Aceptar</string>
+	<string name="main_mid_commit">Confirmar</string>
+	<string name="main_right_upper">Modo ciclico</string>
+	<string name="main_right_lower">Options</string>
+	<string name="main_left_notfound">¿Agregar palabra?</string>
+	<string name="ricon_desc">Mantener icono</string>
+	<string name="symbol_next">Página sig.</string>
+	<string name="symbol_prev">Página prev.</string>
+	<string name="symbol_insert">Insertar símbolo</string>
+	<string name="smiley_insert">Insertar sonrisa</string>
+	<string name="symbol_page">Página: %1$s/%2$s</string>
+
+	<string name="add_word">Agregar palabra</string>
+	<string name="close">Cerrar</string>
+	<string name="add_word_blank">Palabra en blanco no agregada.</string>
+	<string name="add_word_badchar">No puedo agregar una palabra cn un caracter no mapeabe %1$s (%2$s).</string>
+	<string name="add_word_exist1">La palabra (%1$s) ya esta en la BDD.</string>
+	<string name="add_word_exist2">La palabra (%1$s) ya esta en la BDD por %2$s.</string>
+	<string name="title_activity_add_word">Agregar palabra</string>
+	<string name="action_settings">Configuración</string>
+	<string name="database_notready">Base de datos no disponible.</string>
+	<string name="database_settings_notready">Base de datos no disponible. Usando configuración por defecto.</string>
+
+	<string name="updating_database_title">Actualizando base de datos del diccionario…</string>
+	<string name="updating_database">Actualizando base de datos del diccionario, puede tardar un rato.</string>
+	<string name="updating_database_done">Completada la actualizacion de la base de datos del diccionario.</string>
+	<string name="updating_database_unavailable">Actualizando base de datos del diccionario, el ingreso de palabras no estará disponible de momento.</string>
+
+	<string name="pref_lang_title">Soporte multilenguaje…</string>
+	<string name="pref_help">"Mostrar ayuda</string>
+	<string name="pref_loaddict">Cargar diccionario</string>
+	<string name="pref_loaduserdict">Cargar diccionario de usuario</string>
+	
+	<string name="pref_nukedict">Asesinar diccionario</string>
+	<string name="pref_backupdict">Resguardar diccionario</string>
+	<string name="pref_restoredict">Restarurar diccionario</string>
+	<string name="pref_querytest">Query test</string>
+	<string name="pref_testfunc">Test func</string>
+
+	<string name="pref_mode_notify">Mode notifications</string>
+	<string name="pref_mode_notify_subtitle">Used for vocalization of mode changes</string>
+
+	<string name="pref_loadingdict">Loading dictionary…</string>
+	<string name="pref_loadinguserdict">Loading user dictionary…</string>
+	<string name="pref_load_title">Load IME dictionary</string>
+	<string name="pref_loadingbackup">Restoring dictionary…</string>
+	<string name="pref_savingbackup">Backing up dictionary…</string>
+	<string name="pref_nukingdict">Nuking dictionary… Please wait…</string>
+	<string name="pref_loaduser_notfound">Dictionary for %1$s not found. Not loading.</string>
+
+	<string name="pref_backup_warn">Warning: An existing database backup exists. Do you wish to overwrite?</string>
+	<string name="pref_backup_title">Backup IME database</string>
+	<string name="pref_backup_noext">Error: No external storage available for backup. Backup will not continue.</string>
+	<string name="pref_restore_warn">Backup database entries will overwrite existing database entries. Entries not in the backup will be retained. If that is not desired behaviour select \"%1$s\" before selecting this option.</string>
+	<string name="pref_restore_title">Restore IME database</string>
+	<string name="pref_restore_noext">Error: No external storage available for restoring. Restore will not continue.</string>
+	<string name="pref_restore_nofile">Error: Backup file not found.</string>
+	<string name="pref_nuke_warn">Warning: This will delete your entire dictionary. Do you wish to continue?</string>
+	<string name="pref_nuke_title">Nuke IME dictionary</string>
+	<string name="pref_reloadKeys">Reload KeyMap</string>
+
+	<string name="hello_world">Hello world!</string>
+
+
+</resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="pref_inputmode_entries">
-		<item>Dictionary</item>
-		<item>Text</item>
-		<item>Number</item>
+		<item>Diccionario</item>
+		<item>Texto</item>
+		<item>Número</item>
 	</string-array>
 	<integer-array translatable="false" name="pref_inputmode_values">
 		<item>@integer/INPUT_DICT</item>
@@ -18,29 +18,19 @@
 		<item>French</item>
 		<item>Italian</item>
 		<item>Ukrainian</item>
-		<item>Spanish</item>		
+		<item>Spanish</item>
 	</string-array>
-	<!--pref_lang_titles pair with pref_lang_values -->
-	<integer-array translatable="false" name="pref_lang_values">
-		<item>@integer/LANG_EN</item>
-		<item>@integer/LANG_RU</item>
-		<item>@integer/LANG_DE</item>
-		<item>@integer/LANG_FR</item>
-		<item>@integer/LANG_IT</item>
-		<item>@integer/LANG_UK</item>
-		<item>@integer/LANG_ES</item>		
-	</integer-array>
 
 	<string-array name="capsMode">
-		<item>Caps off</item>
-		<item>Single capital</item>
-		<item>All caps</item>
+		<item>Minúsculas</item>
+		<item>Inicial</item>
+		<item>Mayúsculas</item>
 	</string-array>
 
 	<string-array name="keyMode">
-		<item>Dictionary</item>
-		<item>Text</item>
-		<item>Number</item>
+		<item>Diccionario</item>
+		<item>Texto</item>
+		<item>Número</item>
 	</string-array>
 
 	<string-array name="smileyContentDescription">
