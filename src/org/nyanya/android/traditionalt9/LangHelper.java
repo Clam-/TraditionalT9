@@ -82,7 +82,7 @@ public class LangHelper {
 			},
 			{
 					// Spanish resources
-					{R.drawable.ime_en_lang_lower, R.drawable.ime_en_lang_single, R.drawable.ime_en_lang_upper}, //LANG
+					{R.drawable.ime_es_lang_lower, R.drawable.ime_es_lang_single, R.drawable.ime_es_lang_upper}, //LANG
 					{R.drawable.ime_en_text_lower, R.drawable.ime_en_text_single, R.drawable.ime_en_text_upper}, //TEXT
 					{R.drawable.ime_number}, //NUM
 			},			

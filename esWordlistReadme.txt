@@ -1,4 +1,4 @@
 
-  Debian Spanish dictionary words for /usr/share/dict
-  Package: wspanish (1.0.28)
-  https://packages.debian.org/buster/wspanish
+  Recursos Lingüísticos Abiertos del Español
+  Versión v2.6 (es)
+  https://github.com/sbosio/rla-es
