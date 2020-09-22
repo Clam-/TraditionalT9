@@ -5,20 +5,15 @@
 		<item>Texto</item>
 		<item>Número</item>
 	</string-array>
-	<integer-array translatable="false" name="pref_inputmode_values">
-		<item>@integer/INPUT_DICT</item>
-		<item>@integer/INPUT_TEXT</item>
-		<item>@integer/INPUT_NUM</item>
-	</integer-array>
 
 	<string-array name="pref_lang_titles">
-		<item>English</item>
-		<item>Russian</item>
-		<item>German</item>
-		<item>French</item>
-		<item>Italian</item>
-		<item>Ukrainian</item>
-		<item>Spanish</item>
+		<item>Ingles</item>
+		<item>Ruso</item>
+		<item>Alemán</item>
+		<item>Frances</item>
+		<item>Italiano</item>
+		<item>Ukraniano</item>
+		<item>Español</item>
 	</string-array>
 
 	<string-array name="capsMode">
@@ -34,70 +29,70 @@
 	</string-array>
 
 	<string-array name="smileyContentDescription">
-		<item> Smile </item>
-		<item> Clown </item>
-		<item> Sharp grin </item>
-		<item> Cat </item>
-		<item> Half nose </item>
+		<item> Sonríe </item>
+		<item> Payaso </item>
+		<item> Sonrisa aguda </item>
+		<item> Gato </item>
+		<item> Media nariz </item>
 		<item> Schadenfreude </item>
-		<item> Big eye sharp grin </item>
-		<item> Big eye smile </item>
-		<item> Cheeky smile </item>
-		<item> Laughing </item>
+		<item> Gran ojo con una sonrisa aguda </item>
+		<item> Sonrisa de ojos grandes </item>
+		<item> Sonrisa pícara </item>
+		<item> Riendo </item>
 
-		<item> Bug eye laughing </item>
-		<item> Laughing with eyes closed </item>
-		<item> Big eye laughing </item>
-		<item> Glasses pointy nose laughing </item>
-		<item> Pointed hat smile </item>
-		<item> Frown </item>
-		<item> Sad </item>
-		<item> Disheartened </item>
-		<item> Sad clown </item>
-		<item> Sad cheeky </item>
+		<item> Riendo a ojo de buey </item>
+		<item> Riendo con los ojos cerrados </item>
+		<item> Ojo grande riendo </item>
+		<item> Gafas nariz puntiaguda riendo </item>
+		<item> Sonrisa de sombrero puntiagudo </item>
+		<item> Frunce el ceño </item>
+		<item> Triste </item>
+		<item> Descorazonado </item>
+		<item> Payaso triste </item>
+		<item> Triste pícaro </item>
 
-		<item> Crying </item>
-		<item> Laughing to tears </item>
-		<item> Expletive </item>
-		<item> Shocked frown </item>
-		<item> Bug eye\'d frown </item>
-		<item> Sad with eyes closed </item>
-		<item> Crying with mouth open </item>
-		<item> Frown with mouth open </item>
-		<item> Shocked </item>
-		<item> Surprised </item>
+		<item> Llanto </item>
+		<item> Riendo hasta las lágrimas </item>
+		<item> Expletivo </item>
+		<item> Frunciendo el ceño conmocionado </item>
+		<item> El ceño fruncido de los ojos de los bichos </item>
+		<item> Triste con los ojos cerrados </item>
+		<item> Llorando con la boca abierta </item>
+		<item> Frunce el ceño con la boca abierta </item>
+		<item> Conmocionado </item>
+		<item> Sorprendido </item>
 
-		<item> Kiss </item>
-		<item> Winking smile </item>
-		<item> Winking laugh </item>
-		<item> Cheeky tongue out </item>
-		<item> Tongue out </item>
-		<item> Teasing </item>
-		<item> Big eye\'d tongue out </item>
-		<item> Annoyed </item>
-		<item> Skeptic </item>
-		<item> Undecided </item>
+		<item> Beso </item>
+		<item> Sonrisa guiñando el ojo </item>
+		<item> Risa guiñando el ojo </item>
+		<item> Lengua descarada fuera </item>
+		<item> Lengua fuera </item>
+		<item> Bromeando </item>
+		<item> Ojos grandes con la lengua fuera </item>
+		<item> Molesto </item>
+		<item> Escéptico </item>
+		<item> Indeciso </item>
 
-		<item> Confused </item>
-		<item> Closed eyes </item>
-		<item> Unimpressed </item>
-		<item> Bashful </item>
-		<item> Mouth shut </item>
-		<item> Censored </item>
-		<item> Banker </item>
-		<item> Very big sad mouth </item>
-		<item> Mischievous/sarcasm </item>
-		<item> Sour face </item>
+		<item> Confundido </item>
+		<item> Ojos cerrados </item>
+		<item> Sin impresionar </item>
+		<item> Avergonzado </item>
+		<item> Boca cerrada </item>
+		<item> Censurado </item>
+		<item> Banquero </item>
+		<item> Boca muy grande y triste </item>
+		<item> Travesura/sarcasmo </item>
+		<item> Cara agria </item>
 
-		<item> Innocent cat </item>
-		<item> Innocent smile </item>
-		<item> Evil wink </item>
-		<item> Evil grin </item>
-		<item> Shifty eyes </item>
-		<item> Party hat smile </item>
-		<item> Arms up cheering </item>
-		<item> Heart </item>
-		<item> Broken heart </item>
-		<item> big eye\'d cat </item>
+		<item> Gato inocente </item>
+		<item> Sonrisa inocente </item>
+		<item> Guiño maligno </item>
+		<item> Sonrisa malvada </item>
+		<item> Ojos rasgados </item>
+		<item> Sonrisa de sombrero de fiesta </item>
+		<item> Brazos arriba animando </item>
+		<item> Corazón </item>
+		<item> Corazón roto </item>
+		<item> Gato de ojos grandes </item>
 	</string-array>
 </resources>

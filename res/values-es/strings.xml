@@ -47,29 +47,29 @@
 	<string name="pref_querytest">Query test</string>
 	<string name="pref_testfunc">Test func</string>
 
-	<string name="pref_mode_notify">Mode notifications</string>
-	<string name="pref_mode_notify_subtitle">Used for vocalization of mode changes</string>
+	<string name="pref_mode_notify">Modo de notificaciones</string>
+	<string name="pref_mode_notify_subtitle">Se utiliza para la pronunciación de los cambios de modo</string>
 
-	<string name="pref_loadingdict">Loading dictionary…</string>
-	<string name="pref_loadinguserdict">Loading user dictionary…</string>
-	<string name="pref_load_title">Load IME dictionary</string>
-	<string name="pref_loadingbackup">Restoring dictionary…</string>
-	<string name="pref_savingbackup">Backing up dictionary…</string>
-	<string name="pref_nukingdict">Nuking dictionary… Please wait…</string>
-	<string name="pref_loaduser_notfound">Dictionary for %1$s not found. Not loading.</string>
+	<string name="pref_loadingdict">Cargando diccionario…</string>
+	<string name="pref_loadinguserdict">Cargando diccionario de usuario…</string>
+	<string name="pref_load_title">Cargar diccionario IME</string>
+	<string name="pref_loadingbackup">Restaurando diccionario…</string>
+	<string name="pref_savingbackup">Resguardando diccionario…</string>
+	<string name="pref_nukingdict">Asesinando diccionario… Por favor esepere…</string>
+	<string name="pref_loaduser_notfound">El diccionario para %1$s no se encuentra. No se cargará.</string>
 
-	<string name="pref_backup_warn">Warning: An existing database backup exists. Do you wish to overwrite?</string>
-	<string name="pref_backup_title">Backup IME database</string>
-	<string name="pref_backup_noext">Error: No external storage available for backup. Backup will not continue.</string>
-	<string name="pref_restore_warn">Backup database entries will overwrite existing database entries. Entries not in the backup will be retained. If that is not desired behaviour select \"%1$s\" before selecting this option.</string>
-	<string name="pref_restore_title">Restore IME database</string>
-	<string name="pref_restore_noext">Error: No external storage available for restoring. Restore will not continue.</string>
-	<string name="pref_restore_nofile">Error: Backup file not found.</string>
-	<string name="pref_nuke_warn">Warning: This will delete your entire dictionary. Do you wish to continue?</string>
-	<string name="pref_nuke_title">Nuke IME dictionary</string>
-	<string name="pref_reloadKeys">Reload KeyMap</string>
+	<string name="pref_backup_warn">Advertencia: Existe una copia de seguridad ¿Desea reemplazarla?</string>
+	<string name="pref_backup_title">Resguardad base de datos IME</string>
+	<string name="pref_backup_noext">Error: No hay almacenamiento externo disponible para la copia de seguridad. La copia de seguridad no continuará.</string>
+	<string name="pref_restore_warn">Las entradas de la base de datos de respaldo sobrescribirán las entradas de la base de datos existentes. Las entradas que no estén en la copia de seguridad se conservarán. Si ese no es el comportamiento deseado, seleccione \"%1$s\" antes de seleccionar esta opción.</string>
+	<string name="pref_restore_title">Restaurar base de datos IME</string>
+	<string name="pref_restore_noext">Error: No hay almacenamiento externo disponible para la restauración. La restauración no continuará.</string>
+	<string name="pref_restore_nofile">Error: archivo de copia de respaldo no disponible.</string>
+	<string name="pref_nuke_warn">Advertencia: Esto borrará todo su diccionario. ¿Desea continuar?</string>
+	<string name="pref_nuke_title">Asesinar diccionario IME</string>
+	<string name="pref_reloadKeys">Recargar KeyMap</string>
 
-	<string name="hello_world">Hello world!</string>
+	<string name="hello_world">¡Hola mundo!</string>
 
 
 </resources>
