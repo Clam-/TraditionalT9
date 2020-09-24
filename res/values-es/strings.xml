@@ -48,7 +48,7 @@
 	<string name="pref_testfunc">Test func</string>
 
 	<string name="pref_mode_notify">Modo de notificaciones</string>
-	<string name="pref_mode_notify_subtitle">Se utiliza para la pronunciación de los cambios de modo</string>
+	<string name="pref_mode_notify_subtitle">Se utiliza para la representación de los cambios de modo</string>
 
 	<string name="pref_loadingdict">Cargando diccionario…</string>
 	<string name="pref_loadinguserdict">Cargando diccionario de usuario…</string>
