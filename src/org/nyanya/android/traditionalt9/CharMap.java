@@ -42,8 +42,10 @@ public class CharMap {
 		enMap.put('€', 1); enMap.put('ß', 7); // German chars
 		enMap.put('æ', 1); enMap.put('î', 4); enMap.put('ù', 8); enMap.put('œ', 6);	// French chars
 		enMap.put('ì', 4); enMap.put('ò', 8); // Italian chars
-		Map<Character, Integer> endefritmap = Collections.unmodifiableMap(enMap);
-		CHARTABLE.add(0, endefritmap);
+		enMap.put('ú', 4); enMap.put('ç', 8); // Spanish chars + ç
+		Map<Character, Integer> endefritesmap = Collections.unmodifiableMap(enMap);
+		CHARTABLE.add(0, endefritesmap);
+
 
 		// Russian
 		Map<Character, Integer> ruMap = new HashMap<Character, Integer>();
@@ -80,10 +82,11 @@ public class CharMap {
 		// etc
 		CHARTABLE.add(1, Collections.unmodifiableMap(ruMap));
 
-		CHARTABLE.add(2, Collections.unmodifiableMap(endefritmap));
-		CHARTABLE.add(3, Collections.unmodifiableMap(endefritmap));
-		CHARTABLE.add(4, Collections.unmodifiableMap(endefritmap));
+		CHARTABLE.add(2, Collections.unmodifiableMap(endefritesmap));
+		CHARTABLE.add(3, Collections.unmodifiableMap(endefritesmap));
+		CHARTABLE.add(4, Collections.unmodifiableMap(endefritesmap));
 		CHARTABLE.add(5, Collections.unmodifiableMap(ruMap));	
+		CHARTABLE.add(6, Collections.unmodifiableMap(endefritesmap));	
 	}
 
 	protected static final char[][] ENT9TABLE = { { '0', '+' },
@@ -143,8 +146,17 @@ public class CharMap {
 		{ 'р', 'с', 'т', 'у', 'Р', 'С', 'Т', 'У', '6' }, { 'ф', 'х', 'ц', 'ч', 'Ф', 'Х', 'Ц', 'Ч', '7' },
 		{ 'ш', 'щ', 'Ш', 'Щ', '8' }, { 'ь', 'ю', 'я', 'Ь', 'Ю', 'Я', '9' },
 		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
-		
-	protected static final char[][][] T9TABLE = { ENT9TABLE, RUT9TABLE, DET9TABLE, FRT9TABLE, ITT9TABLE, UKT9TABLE };
+
+	protected static final char[][] EST9TABLE = {
+		{ '+', '0' },
+		{ '.', ',', '?', '!', ':', ';', '"', '/', '-', '@', '^', '€', '$', '%', '&', '*', '#', '(', ')', '_', '1' },
+		{ 'a', 'b', 'c', 'A', 'B', 'C', 'á', 'Á', '2' }, { 'd', 'e', 'f', 'D', 'E', 'F', 'é', 'É', '3' },
+		{ 'g', 'h', 'i', 'G', 'H', 'I', 'í', 'Í', '4' }, { 'j', 'k', 'l', 'J', 'K', 'L', '5' },
+		{ 'm', 'n', 'ñ', 'o', 'M', 'N', 'Ñ', 'O', 'ó', 'Ó', '6' }, { 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S', '7' },
+		{ 't', 'u', 'v', 'T', 'U', 'V', 'ú', 'Ú', '8' }, { 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z', '9' },
+		{ ' ', '\n' }, { ' ', '0', '+' }, { '\n' } }; // LAST TWO SPACE ON 0
+				
+	protected static final char[][][] T9TABLE = { ENT9TABLE, RUT9TABLE, DET9TABLE, FRT9TABLE, ITT9TABLE, UKT9TABLE, EST9TABLE };
 
 	// last 2 don't matter, are for spaceOnZero extra 'slots' 0 position, and 10 position
 	protected static final int[] ENT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,	 0, 0 };
@@ -153,7 +165,8 @@ public class CharMap {
 	protected static final int[] FRT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,	 0, 0 };
 	protected static final int[] ITT9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,	 0, 0 };
 	protected static final int[] UKT9CAPSTART = { 0, 0, 5, 5, 6, 4, 4, 4, 2, 3, 0,	 0, 0 };
-	protected static final int[][] T9CAPSTART = {ENT9CAPSTART, RUT9CAPSTART, DET9CAPSTART, FRT9CAPSTART, ITT9CAPSTART, UKT9CAPSTART};
+	protected static final int[] EST9CAPSTART = { 0, 0, 3, 3, 3, 3, 3, 4, 3, 4, 0,	 0, 0 };
+	protected static final int[][] T9CAPSTART = {ENT9CAPSTART, RUT9CAPSTART, DET9CAPSTART, FRT9CAPSTART, ITT9CAPSTART, UKT9CAPSTART, EST9CAPSTART};
 
 	protected static String getStringSequence(String word, LANGUAGE lang) {
 		StringBuilder seq = new StringBuilder();

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="pref_inputmode_entries">
+		<item>Diccionario</item>
+		<item>Texto</item>
+		<item>Número</item>
+	</string-array>
+
+	<string-array name="pref_lang_titles">
+		<item>Ingles</item>
+		<item>Ruso</item>
+		<item>Alemán</item>
+		<item>Frances</item>
+		<item>Italiano</item>
+		<item>Ukraniano</item>
+		<item>Español</item>
+	</string-array>
+
+	<string-array name="capsMode">
+		<item>Minúsculas</item>
+		<item>Inicial</item>
+		<item>Mayúsculas</item>
+	</string-array>
+
+	<string-array name="keyMode">
+		<item>Diccionario</item>
+		<item>Texto</item>
+		<item>Número</item>
+	</string-array>
+
+	<string-array name="smileyContentDescription">
+		<item> Sonríe </item>
+		<item> Payaso </item>
+		<item> Sonrisa aguda </item>
+		<item> Gato </item>
+		<item> Media nariz </item>
+		<item> Schadenfreude </item>
+		<item> Gran ojo con una sonrisa aguda </item>
+		<item> Sonrisa de ojos grandes </item>
+		<item> Sonrisa pícara </item>
+		<item> Riendo </item>
+
+		<item> Riendo a ojo de buey </item>
+		<item> Riendo con los ojos cerrados </item>
+		<item> Ojo grande riendo </item>
+		<item> Gafas nariz puntiaguda riendo </item>
+		<item> Sonrisa de sombrero puntiagudo </item>
+		<item> Frunce el ceño </item>
+		<item> Triste </item>
+		<item> Descorazonado </item>
+		<item> Payaso triste </item>
+		<item> Triste pícaro </item>
+
+		<item> Llanto </item>
+		<item> Riendo hasta las lágrimas </item>
+		<item> Expletivo </item>
+		<item> Frunciendo el ceño conmocionado </item>
+		<item> El ceño fruncido de los ojos de los bichos </item>
+		<item> Triste con los ojos cerrados </item>
+		<item> Llorando con la boca abierta </item>
+		<item> Frunce el ceño con la boca abierta </item>
+		<item> Conmocionado </item>
+		<item> Sorprendido </item>
+
+		<item> Beso </item>
+		<item> Sonrisa guiñando el ojo </item>
+		<item> Risa guiñando el ojo </item>
+		<item> Lengua descarada fuera </item>
+		<item> Lengua fuera </item>
+		<item> Bromeando </item>
+		<item> Ojos grandes con la lengua fuera </item>
+		<item> Molesto </item>
+		<item> Escéptico </item>
+		<item> Indeciso </item>
+
+		<item> Confundido </item>
+		<item> Ojos cerrados </item>
+		<item> Sin impresionar </item>
+		<item> Avergonzado </item>
+		<item> Boca cerrada </item>
+		<item> Censurado </item>
+		<item> Banquero </item>
+		<item> Boca muy grande y triste </item>
+		<item> Travesura/sarcasmo </item>
+		<item> Cara agria </item>
+
+		<item> Gato inocente </item>
+		<item> Sonrisa inocente </item>
+		<item> Guiño maligno </item>
+		<item> Sonrisa malvada </item>
+		<item> Ojos rasgados </item>
+		<item> Sonrisa de sombrero de fiesta </item>
+		<item> Brazos arriba animando </item>
+		<item> Corazón </item>
+		<item> Corazón roto </item>
+		<item> Gato de ojos grandes </item>
+	</string-array>
+</resources>
