@@ -70,7 +70,7 @@ public class T9DB {
 			"UPDATE "+WORD_TABLE_NAME+" " +
 			"SET "+COLUMN_FREQUENCY+"=(select val from maxfreq)+1\n" +
 			"WHERE "+COLUMN_ID+"=(SELECT id from wordId) \n" +
-			"AND "+COLUMN_FREQUENCY+"<((select val from maxfreq)-"+String.valueOf(MAX_RESULTS)+")";
+			"AND "+COLUMN_FREQUENCY+"<(select val from maxfreq)";
 
 	private static final int CAPS_OFF = 0;
 	private static final int CAPS_SINGLE = 1;
