@@ -795,7 +795,7 @@ public class TraditionalT9 extends InputMethodService implements
 		}
 
 		if (!onKeyUp_(keyCode, event)) {
-			if (key == null || keyRemap) {
+			if (key == null || !keyRemap) {
 				return false;
 			}
 			else {
