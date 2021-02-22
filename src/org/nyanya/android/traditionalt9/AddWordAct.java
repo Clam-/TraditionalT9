@@ -2,7 +2,6 @@ package org.nyanya.android.traditionalt9;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -70,7 +69,7 @@ public class AddWordAct extends Activity {
 	public void doAddWord(String text) {
 		T9DB db = T9DB.getInstance(this);
 		try {
-			db.addWord(text, LangHelper.LANGUAGE.get(lang));
+			db.addWordFromUserInput(text, LangHelper.LANGUAGE.get(lang));
 		} catch (DBException e) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			String msg = e.getMessage();

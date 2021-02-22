@@ -328,7 +328,8 @@ public class T9DB {
 		return settings;
 	}
 
-	protected void addWord(String iword, LANGUAGE lang, int freq) throws DBException {
+	protected long addWord(String iword, LANGUAGE lang, int freq) throws DBException {
+		long rslt = -1;
 		Resources r = mContext.getResources();
 		if (iword.equals("")) {
 			throw new DBException(r.getString(R.string.add_word_blank));
@@ -350,22 +351,23 @@ public class T9DB {
 		if (!checkReady()) {
 			Log.e("T9DB.addWord", "not ready");
 			Toast.makeText(mContext, R.string.database_notready, Toast.LENGTH_SHORT).show();
-			return;
+			return rslt;
 		}
 		try {
-			long insertedWordId = db.insertOrThrow(WORD_TABLE_NAME, null, values);
-			if(insertedWordId > 0) {
-				incrementWord(insertedWordId);
-			}
+			rslt = db.insertOrThrow(WORD_TABLE_NAME, null, values);
 		} catch (SQLiteConstraintException e) {
 			String msg = r.getString(R.string.add_word_exist2, iword, lang.name());
 			Log.w("T9DB.addWord", msg);
 			throw new DBException(msg);
 		}
+		return rslt;
 	}
 
-	protected void addWord(String iword, LANGUAGE lang) throws DBException {
-		addWord(iword, lang, 1);
+	protected void addWordFromUserInput(String iword, LANGUAGE lang) throws DBException {
+		long wordId = addWord(iword, lang, 1);
+		if(wordId > 0) {
+			incrementWord(wordId);
+		}
 	}
 
 	protected void incrementWord(long id) {
