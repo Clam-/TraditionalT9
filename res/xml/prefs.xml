@@ -27,6 +27,12 @@
 		summary="@string/pref_mode_notify_subtitle"
 		defaultValue="false"
 		/>
+	<SettingCheck
+		id="pref_noAnimation"
+		title="@string/pref_noAnimation"
+		summary="@string/pref_noAnimationSum"
+		defaultValue="false"
+		/>
 	<Setting title="@string/pref_loaddict" id="loaddict"/>
 	<Setting title="@string/pref_loaduserdict" summary="@string/pref_loaduserdictdesc" id="loaduserdict"/>
 	<Setting title="@string/pref_nukedict" id="nukedict"/>

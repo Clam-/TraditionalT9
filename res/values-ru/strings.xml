@@ -11,10 +11,10 @@
     <string name="ime_name">Клавиатура T9</string>
     <string name="ime_number">Цифры</string>
     <string name="main_left_addword">Добавить слово</string>
-    <string name="main_left_insert">вставить символ</string>
+    <string name="main_left_insert">Вставить символ</string>
     <string name="main_left_notfound">Добавить слово?</string>
     <string name="main_mid">Готово</string>
-    <string name="main_mid_commit">Commit</string>
+    <string name="main_mid_commit">Принять</string>
     <string name="main_right_lower">Изменить IME</string>
     <string name="main_right_upper">Режим ввода</string>
     <string name="pref_backup_noext">Ошибка: Внешняя память недоступна. Резервное копирование невозможно невозможно.</string>
@@ -60,10 +60,14 @@
 	<string name="pref_loaduser_notfound"> Ошибка. \n Словарь %1$s не найден. </string>
 	<string name="pref_mode_notify_subtitle">Используется для озвучивания изменения режима ввода.</string>
 	<string name="pref_mode_notify">Режим уведомления</string>
-	<string name="database_settings_notready">Database unavailable. Using default settings.</string>
-	<string name="pref_reloadKeys">Force reload of key overrides</string>
+	<string name="database_settings_notready">База данных недоступна. Используем значения по умолчанию.</string>
+	<string name="pref_reloadKeys">Перезагрузить кеймап</string>
 
     <string name="title_activity_add_word">Добавить слово</string>
     <string name="traditionalt9_settings">Traditional T9 настройки</string>
+    <string name="pref_spaceOnZero" translatable="false">Пробел на кнопке 0</string>
+    <string name="pref_spaceOnZeroSum">Когда включено, пробел ставится кнопкой 0, иначе #</string>
+    <string name="pref_noAnimation">Без анимаций</string>
+    <string name="pref_noAnimationSum">Не анимировать скролл предлагаемых слов</string>
 
 </resources>

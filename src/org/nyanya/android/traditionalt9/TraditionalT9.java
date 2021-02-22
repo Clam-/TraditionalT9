@@ -26,6 +26,8 @@ import java.util.List;
 public class TraditionalT9 extends InputMethodService implements
 		KeyboardView.OnKeyboardActionListener {
 
+	private Quirks mQuirks = Quirks.getCurrentPhoneQuirks();
+
 	private CandidateView mCandidateView;
 	private InterfaceHandler interfacehandler = null;
 
@@ -150,7 +152,10 @@ public class TraditionalT9 extends InputMethodService implements
 	 */
 	@Override
 	public View onCreateCandidatesView() {
-		mCandidateView = new CandidateView(this);
+		Object[] setting = db.getSettings(new SETTING[] {SETTING.NO_ANIMATION} );
+		boolean noAnim = setting[0].equals(1);
+
+		mCandidateView = new CandidateView(this, !noAnim);
 		return mCandidateView;
 	}
 
@@ -534,7 +539,7 @@ public class TraditionalT9 extends InputMethodService implements
 				return false;
 			}
 			return handleDPAD(keyCode, event, true);
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT || keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
+		} else if (keyCode == mQuirks.leftSoftKey || keyCode == mQuirks.rightSoftKey) {
 			if (!isInputViewShown()) {
 				return super.onKeyDown(keyCode, event);
 			}
@@ -556,6 +561,9 @@ public class TraditionalT9 extends InputMethodService implements
 		if (mKeyMode == MODE_TEXT) {
 			t9releasehandler.removeCallbacks(mt9release);
 		}
+
+
+
 		if (keyCode == KeyEvent.KEYCODE_BACK) {// The InputMethodService already takes care of the back
 			// key for us, to dismiss the input method if it is shown.
 			// but we will manage it ourselves because native Android handling
@@ -566,7 +574,7 @@ public class TraditionalT9 extends InputMethodService implements
 			return false;
 
 			// special case for softkeys
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT || keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
+		} else if (keyCode == mQuirks.leftSoftKey || keyCode == mQuirks.rightSoftKey) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, true);
 			}
@@ -624,7 +632,7 @@ public class TraditionalT9 extends InputMethodService implements
 		awintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		awintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		if (interfacehandler != null) {
-			interfacehandler.setPressed(KeyEvent.KEYCODE_SOFT_RIGHT, false);
+			interfacehandler.setPressed(mQuirks.rightSoftKey, false);
 		}
 		hideWindow();
 		startActivity(awintent);
@@ -656,7 +664,7 @@ public class TraditionalT9 extends InputMethodService implements
 				return true;
 			}
 
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
+		} else if (keyCode == mQuirks.leftSoftKey) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
 			}
@@ -668,7 +676,7 @@ public class TraditionalT9 extends InputMethodService implements
 				}
 			}
 
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT) {
+		} else if (keyCode == mQuirks.rightSoftKey) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
 			}
@@ -721,7 +729,7 @@ public class TraditionalT9 extends InputMethodService implements
 				return false;
 			}
 			return handleDPAD(keyCode, event, false);
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT || keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
+		} else if (keyCode == mQuirks.rightSoftKey || keyCode == mQuirks.leftSoftKey) {
 			if (!isInputViewShown()) {
 				return super.onKeyDown(keyCode, event);
 			}
@@ -743,7 +751,7 @@ public class TraditionalT9 extends InputMethodService implements
 			return false;
 
 			// special case for softkeys
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT || keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {// if (mAddingWord){
+		} else if (keyCode == mQuirks.rightSoftKey || keyCode == mQuirks.leftSoftKey) {// if (mAddingWord){
 			// Log.d("onKeyUp", "key: " + keyCode + " skip: " +
 			// mAddingSkipInput);
 			// if (mAddingSkipInput) {
@@ -887,14 +895,13 @@ public class TraditionalT9 extends InputMethodService implements
 		} else if (keyCode == KeyEvent.KEYCODE_POUND) {
 			// space
 			handleCharacter(KeyEvent.KEYCODE_POUND);
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
+		} else if (keyCode == mQuirks.leftSoftKey) {
 			if (mWordFound) {
 				showSymbolPage();
 			} else {
 				showAddWord();
 			}
-
-		} else if (keyCode == KeyEvent.KEYCODE_SOFT_RIGHT) {
+		} else if (keyCode == mQuirks.rightSoftKey) {
 			nextKeyMode();
 
 		} else {

@@ -11,6 +11,7 @@ public class InterfaceHandler implements View.OnClickListener, View.OnLongClickL
 	private static final int[] buttons = { R.id.main_left, R.id.main_right, R.id.main_mid };
 	private TraditionalT9 parent;
 	private View mainview;
+	private final Quirks mQuirks = Quirks.getCurrentPhoneQuirks();
 
 	public InterfaceHandler(View mainview, TraditionalT9 iparent) {
 		this.parent = iparent;
@@ -36,16 +37,14 @@ public class InterfaceHandler implements View.OnClickListener, View.OnLongClickL
 
 	protected void setPressed(int keyCode, boolean pressed) {
 		int id = 0;
-		switch (keyCode) {
-		case KeyEvent.KEYCODE_SOFT_LEFT:
+		if(keyCode == mQuirks.leftSoftKey) {
 			id = R.id.main_left;
-			break;
-		case KeyEvent.KEYCODE_SOFT_RIGHT:
+		}
+		else if (keyCode == mQuirks.rightSoftKey) {
 			id = R.id.main_right;
-			break;
-		case KeyEvent.KEYCODE_DPAD_CENTER:
+		}
+		else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
 			id = R.id.main_mid;
-			break;
 		}
 		if (id != 0) {
 			((View) mainview.findViewById(id)).setPressed(pressed);

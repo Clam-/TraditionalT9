@@ -39,6 +39,8 @@ public class CandidateView extends View {
 
 	private int mTotalWidth;
 
+	private boolean mSmoothScroll;
+
 	Rect mPadding;
 
 	/**
@@ -46,7 +48,7 @@ public class CandidateView extends View {
 	 *
 	 * @param context
 	 */
-	public CandidateView(Context context) {
+	public CandidateView(Context context, boolean smoothScroll) {
 		super(context);
 		mSelectionHighlight = context.getResources().getDrawable(
 			android.R.drawable.list_selector_background);
@@ -75,6 +77,8 @@ public class CandidateView extends View {
 		setWillNotDraw(false);
 		setHorizontalScrollBarEnabled(false);
 		setVerticalScrollBarEnabled(false);
+
+		mSmoothScroll = smoothScroll;
 	}
 
 	@Override
@@ -158,21 +162,26 @@ public class CandidateView extends View {
 	}
 
 	private void scrollToTarget() {
-		int sx = getScrollX();
-		if (mTargetScrollX > sx) {
-			sx += SCROLL_PIXELS;
-			if (sx >= mTargetScrollX) {
-				sx = mTargetScrollX;
-				requestLayout();
+		if(mSmoothScroll) {
+			int sx = getScrollX();
+			if (mTargetScrollX > sx) {
+				sx += SCROLL_PIXELS;
+				if (sx >= mTargetScrollX) {
+					sx = mTargetScrollX;
+					requestLayout();
+				}
+			} else {
+				sx -= SCROLL_PIXELS;
+				if (sx <= mTargetScrollX) {
+					sx = mTargetScrollX;
+					requestLayout();
+				}
 			}
-		} else {
-			sx -= SCROLL_PIXELS;
-			if (sx <= mTargetScrollX) {
-				sx = mTargetScrollX;
-				requestLayout();
-			}
+			scrollTo(sx, getScrollY());
 		}
-		scrollTo(sx, getScrollY());
+		else {
+			scrollTo(mTargetScrollX, getScrollY());
+		}
 		invalidate();
 	}
 

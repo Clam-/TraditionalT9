@@ -415,7 +415,7 @@ public class TraditionalT9Settings extends ListActivity implements
 							rpl.addMsg("Number error ("+fname+") at line " + linecount+". Using 0 for frequency.");
 							freq = 0;
 						}
-						if (lang == LANGUAGE.NONE && ws.length == 3) {
+						if (ws.length == 3) {
 							try {
 								lang = LANGUAGE.get(Integer.parseInt(ws[2]));
 							} catch (NumberFormatException e) {
@@ -693,7 +693,7 @@ public class TraditionalT9Settings extends ListActivity implements
 		// get settings
 		Object[] settings = T9DB.getInstance(this).getSettings(new SETTING[]
 				// Order should be based on SETTING.sqOrder
-				{SETTING.INPUT_MODE, SETTING.LANG_SUPPORT, SETTING.MODE_NOTIFY, SETTING.KEY_REMAP, SETTING.SPACE_ZERO});
+				{SETTING.INPUT_MODE, SETTING.LANG_SUPPORT, SETTING.MODE_NOTIFY, SETTING.KEY_REMAP, SETTING.SPACE_ZERO, SETTING.NO_ANIMATION});
 		ListAdapter settingitems;
 		try {
 			settingitems = new SettingAdapter(this, CustomInflater.inflate(this, R.xml.prefs, settings));

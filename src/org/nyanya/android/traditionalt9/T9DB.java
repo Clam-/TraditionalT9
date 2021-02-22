@@ -28,7 +28,7 @@ public class T9DB {
 	protected boolean ready = true;
 
 	protected static final String DATABASE_NAME = "t9dict.db";
-	protected static final int DATABASE_VERSION = 4;
+	protected static final int DATABASE_VERSION = 5;
 	protected static final String WORD_TABLE_NAME = "word";
 	protected static final String SETTING_TABLE_NAME = "setting";
 	protected static final String FREQ_TRIGGER_NAME = "freqtrigger";
@@ -44,16 +44,33 @@ public class T9DB {
 	protected static final String COLUMN_WORD = "word";
 	protected static final String COLUMN_FREQUENCY = "freq";
 
+	private static final int MAX_RESULTS = 8;
+	private static final int MAX_MAX_RESULTS = 30; // to make sure we don't exceed candidate view array.
+
 	private static final String QUERY1 = "SELECT " + COLUMN_ID + ", " + COLUMN_WORD + " FROM " + WORD_TABLE_NAME +
 			" WHERE " + COLUMN_LANG + "=? AND " + COLUMN_SEQ + "=?" +
 			" ORDER BY " + COLUMN_FREQUENCY + " DESC";
 
-	private static final String UPDATEQ = "UPDATE " + WORD_TABLE_NAME +
-			" SET " + COLUMN_FREQUENCY + " = " + COLUMN_FREQUENCY + "+1" +
-			" WHERE " + COLUMN_ID + "=";
-
-	private static final int MAX_RESULTS = 8;
-	private static final int MAX_MAX_RESULTS = 30; // to make sure we don't exceed candidate view array.
+	/**
+	 * New update query explanation:
+	 * 1. Take max frequency for this sequence
+	 * 2. If current word is within Top-MAX_RESULTS, do nothing
+	 * 3. Otherwise bring it to the top
+	 *
+	 * That way we aren't inflating the values pointlessly, yet bringing most common choices to
+	 * the beginning of candidate list
+	 */
+	private static final String UPDATEQ = "WITH wordId(id) as (select %d), old (seq,lang) AS (" +
+			"SELECT "+COLUMN_SEQ+", "+COLUMN_LANG+" FROM "+WORD_TABLE_NAME+" WHERE "+COLUMN_ID+"=(SELECT id from wordId)), " +
+			"maxfreq(val) as (" +
+			"select max("+COLUMN_FREQUENCY+") from "+WORD_TABLE_NAME+" " +
+			"where seq=(SELECT seq FROM old) " +
+			"AND lang=(SELECT lang from old)" +
+			") " +
+			"UPDATE "+WORD_TABLE_NAME+" " +
+			"SET "+COLUMN_FREQUENCY+"=(select val from maxfreq)+1\n" +
+			"WHERE "+COLUMN_ID+"=(SELECT id from wordId) \n" +
+			"AND "+COLUMN_FREQUENCY+"<((select val from maxfreq)-"+String.valueOf(MAX_RESULTS)+")";
 
 	private static final int CAPS_OFF = 0;
 	private static final int CAPS_SINGLE = 1;
@@ -72,7 +89,8 @@ public class T9DB {
 			LAST_LANG("set_last_lang", 1, 5),
 			LAST_WORD("set_last_word", null, 6),
 			SPACE_ZERO("pref_spaceOnZero", 0, 4),
-			KEY_REMAP("pref_keyMap", 0, 3);
+			KEY_REMAP("pref_keyMap", 0, 3),
+			NO_ANIMATION("pref_noAnimation", 0, 5);
 
 			public final String id;
 			public final Integer defvalue;
@@ -310,7 +328,7 @@ public class T9DB {
 		return settings;
 	}
 
-	protected void addWord(String iword, LANGUAGE lang) throws DBException {
+	protected void addWord(String iword, LANGUAGE lang, int freq) throws DBException {
 		Resources r = mContext.getResources();
 		if (iword.equals("")) {
 			throw new DBException(r.getString(R.string.add_word_blank));
@@ -328,7 +346,7 @@ public class T9DB {
 		values.put(COLUMN_LANG, lang.id);
 		// add word into word
 		values.put(COLUMN_WORD, iword);
-		values.put(COLUMN_FREQUENCY, 1);
+		values.put(COLUMN_FREQUENCY, freq);
 		if (!checkReady()) {
 			Log.e("T9DB.addWord", "not ready");
 			Toast.makeText(mContext, R.string.database_notready, Toast.LENGTH_SHORT).show();
@@ -343,13 +361,17 @@ public class T9DB {
 		}
 	}
 
+	protected void addWord(String iword, LANGUAGE lang) throws DBException {
+		addWord(iword, lang, 1);
+	}
+
 	protected void incrementWord(int id) {
 		if (!checkReady()) {
 			Log.e("T9DB.incrementWord", "not ready");
 			Toast.makeText(mContext, R.string.database_notready, Toast.LENGTH_SHORT).show();
 			return;
 		}
-		db.execSQL(UPDATEQ + id);
+		db.execSQL(String.format(UPDATEQ, id));
 		// if id's freq is greater than FREQ_MAX, it gets normalized with trigger
 	}
 
@@ -519,6 +541,7 @@ public class T9DB {
 					DBSettings.SETTING.LAST_LANG.id	+ " INTEGER, " +
 					DBSettings.SETTING.KEY_REMAP.id	+ " INTEGER, " +
 					DBSettings.SETTING.SPACE_ZERO.id	+ " INTEGER, " +
+					DBSettings.SETTING.NO_ANIMATION.id	+ " INTEGER, " +
 					DBSettings.SETTING.LAST_WORD.id	+ " TEXT )");
 		}
 
@@ -552,6 +575,16 @@ public class T9DB {
 				ContentValues updatedata = new ContentValues();
 				updatedata.put(DBSettings.SETTING.KEY_REMAP.id, 0);
 				updatedata.put(DBSettings.SETTING.SPACE_ZERO.id, 0);
+				db.update(SETTING_TABLE_NAME, updatedata, null, null);
+			}
+			if (oldVersion == 4) {
+				// Add options: NO_ANIMATION
+				db.execSQL("ALTER TABLE " + SETTING_TABLE_NAME + " ADD COLUMN " +
+						DBSettings.SETTING.NO_ANIMATION.id + " INTEGER");
+
+				ContentValues updatedata = new ContentValues();
+				updatedata.put(DBSettings.SETTING.NO_ANIMATION.id, 0);
+
 				db.update(SETTING_TABLE_NAME, updatedata, null, null);
 			}
 			onCreate(db);
