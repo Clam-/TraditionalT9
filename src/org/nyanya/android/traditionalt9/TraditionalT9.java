@@ -1,6 +1,9 @@
 package org.nyanya.android.traditionalt9;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.KeyboardView;
@@ -96,6 +99,25 @@ public class TraditionalT9 extends InputMethodService implements
 
 	private Toast modeNotification = null;
 
+	private BroadcastReceiver mWordAddedReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if(intent.getAction().equals(AddWordAct.WORD_ADDED_NOTIFICATION)) {
+				String word = intent.getStringExtra(AddWordAct.WORD_ADDED_NOTIFICATION_WORD_VALUE);
+				if(word != null) {
+					if (currentInputConnection == null)
+						return;
+					currentInputConnection.beginBatchEdit();
+					if (mComposing.length() > 0 || mComposingI.length() > 0) {
+						commitTyped();
+					}
+					currentInputConnection.commitText(word, 1);
+					currentInputConnection.endBatchEdit();
+				}
+			}
+		}
+	};
+
 	/**
 	 * Main initialization of the input method component. Be sure to call to
 	 * super class.
@@ -111,6 +133,10 @@ public class TraditionalT9 extends InputMethodService implements
 			interfacehandler = new InterfaceHandler(getLayoutInflater().inflate(R.layout.mainview,
 					null), this);
 		}
+
+		IntentFilter wordAddedIFlt = new IntentFilter();
+		wordAddedIFlt.addAction(AddWordAct.WORD_ADDED_NOTIFICATION);
+		registerReceiver(mWordAddedReceiver, wordAddedIFlt);
 	}
 
 	@Override
@@ -220,6 +246,7 @@ public class TraditionalT9 extends InputMethodService implements
 			awintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			awintent.putExtra("org.nyanya.android.traditionalt9.word", template);
 			awintent.putExtra("org.nyanya.android.traditionalt9.lang", mLang.id);
+
 			clearState();
 			currentInputConnection.setComposingText("", 0);
 			currentInputConnection.finishComposingText();
@@ -462,6 +489,7 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onDestroy() {
 		db.close();
+		unregisterReceiver(mWordAddedReceiver);
 		super.onDestroy();
 	}
 

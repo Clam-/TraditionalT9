@@ -353,7 +353,10 @@ public class T9DB {
 			return;
 		}
 		try {
-			db.insertOrThrow(WORD_TABLE_NAME, null, values);
+			long insertedWordId = db.insertOrThrow(WORD_TABLE_NAME, null, values);
+			if(insertedWordId > 0) {
+				incrementWord(insertedWordId);
+			}
 		} catch (SQLiteConstraintException e) {
 			String msg = r.getString(R.string.add_word_exist2, iword, lang.name());
 			Log.w("T9DB.addWord", msg);
@@ -365,7 +368,7 @@ public class T9DB {
 		addWord(iword, lang, 1);
 	}
 
-	protected void incrementWord(int id) {
+	protected void incrementWord(long id) {
 		if (!checkReady()) {
 			Log.e("T9DB.incrementWord", "not ready");
 			Toast.makeText(mContext, R.string.database_notready, Toast.LENGTH_SHORT).show();
