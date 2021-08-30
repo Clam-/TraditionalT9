@@ -2,11 +2,19 @@ import groovy.swing.SwingBuilder
 buildscript {
 	repositories {
 		mavenCentral()
+		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:1.5.0'
+		classpath 'com.android.tools.build:gradle:3.2.0'
 	}
 }
+allprojects {
+	repositories {
+		google()
+		jcenter()
+	}
+}
+
 apply plugin: 'android'
 
 dependencies {
@@ -65,9 +73,9 @@ def saveProps(Properties props) {
 def computeVersionNumber = { ->
 	Properties props = getProps()
 	int verNum = Integer.valueOf(props.getProperty("verNum", "0"))
-	if (project.hasProperty('incrementBuildNumber')) {
-		verNum++
-	}
+//	if (project.hasProperty('incrementBuildNumber')) {classpath 'com.android.tools.build:gradle
+//		verNum++
+//	}
 	props.setProperty("verNum", String.valueOf(verNum))
 	saveProps(props)
 	return verNum
@@ -89,7 +97,7 @@ android {
 		}
 
 		// Move the tests to tests/java, tests/res, etc...
-		instrumentTest.setRoot('tests')
+		androidTest.setRoot('tests')
 
 		// Move the build types to build-types/<type>
 		// For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -105,30 +113,6 @@ android {
 	defaultConfig {
 		versionCode computeVersionNumber()
 		versionName computeVersionName()
-	}
-
-	// http://stackoverflow.com/a/19130098
-	signingConfigs {
-		release {
-			storeFile file(System.getenv("KEYSTORE"))
-			storePassword ''
-			keyAlias System.getenv("KEYALIAS")
-			keyPassword ''
-		}
-	}
-
-	buildTypes {
-		release {
-			signingConfig android.signingConfigs.release
-			// http://stackoverflow.com/a/24650026
-			applicationVariants.all { variant ->
-				variant.outputs.each { output ->
-					output.outputFile = new File(output.outputFile.parent,
-							output.outputFile.name.replace("-release", "-" + android.defaultConfig.versionName)
-					)
-				}
-			}
-		}
 	}
 }
 
