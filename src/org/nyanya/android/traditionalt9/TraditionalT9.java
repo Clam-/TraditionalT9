@@ -581,7 +581,10 @@ public class TraditionalT9 extends InputMethodService implements
 				keyCode == KeyEvent.KEYCODE_9 || keyCode == KeyEvent.KEYCODE_POUND || keyCode == KeyEvent.KEYCODE_STAR) {
 			event.startTracking();
 			return true;
-		} else {// KeyCharacterMap.load(KeyCharacterMap.BUILT_IN_KEYBOARD).getNumber(keyCode)
+		} else if (keyCode == 232) {
+			onKey(KeyEvent.KEYCODE_DEL, null);
+			return true;
+			// KeyCharacterMap.load(KeyCharacterMap.BUILT_IN_KEYBOARD).getNumber(keyCode)
 			// Log.w("onKeyDown", "Unhandled Key: " + keyCode + "(" +
 			// event.toString() + ")");
 		}
