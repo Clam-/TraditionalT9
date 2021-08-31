@@ -650,15 +650,8 @@ public class TraditionalT9 extends InputMethodService implements
 			}
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_STAR) {
-			if (mKeyMode != MODE_NUM) {
-				if (mLangsAvailable.length > 1) {
-					nextLang();
-				} else {
-					showSmileyPage(); // TODO: replace with lang select if lang thing
-				}
-				return true;
-			}
-
+			nextKeyMode();
+			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
