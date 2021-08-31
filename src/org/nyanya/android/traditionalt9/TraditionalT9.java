@@ -757,6 +757,16 @@ public class TraditionalT9 extends InputMethodService implements
 			}
 			onKey(keyCode, null);
 			return true;
+		} else if (keyCode == KeyEvent.KEYCODE_1) {
+			if (mKeyMode != MODE_NUM) {
+				showSymbolPage();
+				return true;
+			}
+		} else if (keyCode == KeyEvent.KEYCODE_0) {
+			if (mKeyMode != MODE_NUM) {
+				showSmileyPage();
+				return true;
+			}
 		} else if (keyCode == KeyEvent.KEYCODE_0 || keyCode == KeyEvent.KEYCODE_1 || keyCode == KeyEvent.KEYCODE_2
 				|| keyCode == KeyEvent.KEYCODE_3 || keyCode == KeyEvent.KEYCODE_4 || keyCode == KeyEvent.KEYCODE_5 ||
 				keyCode == KeyEvent.KEYCODE_6 || keyCode == KeyEvent.KEYCODE_7 || keyCode == KeyEvent.KEYCODE_8 ||
