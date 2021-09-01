@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -742,6 +743,10 @@ public class TraditionalT9Settings extends ListActivity implements
 			if (msg != 0) {
 				Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 			}
+		} else if (s.id.equals("enableT9")) {
+			final Intent enableIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+			enableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			this.startActivity(enableIntent);
 		}
 		else
 			s.clicked(mContext);
