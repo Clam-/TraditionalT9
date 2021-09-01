@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DatabaseUtils.InsertHelper;
@@ -705,6 +706,20 @@ public class TraditionalT9Settings extends ListActivity implements
 		setListAdapter(settingitems);
 		mContext = this;
 
+		loadDictForFirstTime();
+	}
+
+	void loadDictForFirstTime() {
+		final String key = "isDictionaryLoadedFirstTime";
+		final SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+		if (!sharedPref.getBoolean(key, false)) {
+			preloader(R.string.pref_loadingdict, true, false);
+
+			SharedPreferences.Editor editor = sharedPref.edit();
+			editor.putBoolean(key, true);
+			editor.commit();
+		}
 	}
 
 	@Override
