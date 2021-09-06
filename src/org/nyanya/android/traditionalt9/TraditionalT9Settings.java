@@ -711,15 +711,10 @@ public class TraditionalT9Settings extends ListActivity implements
 	}
 
 	void loadDictForFirstTime() {
-		final String key = "isDictionaryLoadedFirstTime";
-		final SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-
-		if (!sharedPref.getBoolean(key, false)) {
+		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		if (!pref.isDictionaryLoadedFirstTime()) {
 			preloader(R.string.pref_loadingdict, true, false);
-
-			SharedPreferences.Editor editor = sharedPref.edit();
-			editor.putBoolean(key, true);
-			editor.commit();
+			pref.setIsDictionaryLoadedFirstTimePref(true);
 		}
 	}
 

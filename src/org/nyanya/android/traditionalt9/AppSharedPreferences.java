@@ -19,4 +19,8 @@ public class AppSharedPreferences {
     public boolean isDictionaryLoadedFirstTime() {
         return sharedPreferences.getBoolean(isDictionaryLoadedFirstTimePref, false);
     }
+
+    public void setIsDictionaryLoadedFirstTimePref(boolean loaded) {
+        sharedPreferences.edit().putBoolean(isDictionaryLoadedFirstTimePref, loaded).commit();
+    }
 }
