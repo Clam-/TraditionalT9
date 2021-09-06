@@ -248,6 +248,14 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onStartInput(EditorInfo attribute, boolean restarting) {
 		super.onStartInput(attribute, restarting);
+
+		// this will trigger dictionary load (if it's not loaded yet)
+		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		if (!pref.isDictionaryLoadedFirstTime()) {
+			launchOptions();
+			return;
+		}
+
 		currentInputConnection = getCurrentInputConnection();
 		//Log.d("T9.onStartInput", "INPUTTYPE: " + attribute.inputType + " FIELDID: " + attribute.fieldId +
 		//	" FIELDNAME: " + attribute.fieldName + " PACKAGE NAME: " + attribute.packageName);

@@ -503,6 +503,12 @@ public class TraditionalT9Settings extends ListActivity implements
 			} else {
 				finishAndShowError(pd, result, R.string.pref_load_title);
 			}
+
+			final AppSharedPreferences pref = new AppSharedPreferences(TraditionalT9Settings.this);
+			if (!pref.isDictionaryLoadedFirstTime()) {
+				pref.setIsDictionaryLoadedFirstTimePref(true);
+				TraditionalT9Settings.this.finishActivity(0);
+			}
 		}
 	}
 
@@ -714,7 +720,6 @@ public class TraditionalT9Settings extends ListActivity implements
 		final AppSharedPreferences pref = new AppSharedPreferences(this);
 		if (!pref.isDictionaryLoadedFirstTime()) {
 			preloader(R.string.pref_loadingdict, true, false);
-			pref.setIsDictionaryLoadedFirstTimePref(true);
 		}
 	}
 
