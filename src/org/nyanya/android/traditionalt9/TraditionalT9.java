@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.KeyboardView;
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.InputType;
@@ -248,6 +249,15 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onStartInput(EditorInfo attribute, boolean restarting) {
 		super.onStartInput(attribute, restarting);
+
+		if (!BuildConfig.DEBUG) {
+			if (!Build.MODEL.toLowerCase().equals("p-one")
+					&& !Build.MODEL.toLowerCase().equals("lm180")
+					&& !Build.MODEL.toLowerCase().equals("teams")) {
+				Toast.makeText(getApplicationContext(), "Incompatible with " + Build.MODEL + ". Please use other keyboard.", Toast.LENGTH_LONG).show();
+				return;
+			}
+		}
 
 		// this will trigger dictionary load (if it's not loaded yet)
 		final AppSharedPreferences pref = new AppSharedPreferences(this);
