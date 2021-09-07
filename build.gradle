@@ -115,6 +115,16 @@ android {
 		versionName computeVersionName()
 		applicationId "com.smartwalkietalkie.android.t9"
 	}
+
+	signingConfigs {
+		release {
+			storeFile file('./t9voiceping')
+			storePassword 't9voiceping'
+			keyAlias = 't9voiceping'
+			keyPassword 't9voiceping'
+//			organization 'smartwalkietalkie.com'
+		}
+	}
 }
 
 task getDictSizes {
