@@ -69,18 +69,6 @@ def saveProps(Properties props) {
 	props.store(new FileOutputStream(new File("t9build.properties")), null)
 }
 
-// -PincrementBuildNumber assembleRelease
-def computeVersionNumber = { ->
-	Properties props = getProps()
-	int verNum = Integer.valueOf(props.getProperty("verNum", "0"))
-//	if (project.hasProperty('incrementBuildNumber')) {classpath 'com.android.tools.build:gradle
-//		verNum++
-//	}
-	props.setProperty("verNum", String.valueOf(verNum))
-	saveProps(props)
-	return verNum
-}
-
 android {
 	compileSdkVersion 31
 	buildToolsVersion "19.1"
@@ -111,7 +99,7 @@ android {
 	}
 
 	defaultConfig {
-		versionCode computeVersionNumber()
+		versionCode 2
 		versionName computeVersionName()
 		applicationId "com.smartwalkietalkie.android.t9"
 		targetSdkVersion 31
