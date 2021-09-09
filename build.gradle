@@ -82,7 +82,7 @@ def computeVersionNumber = { ->
 }
 
 android {
-	compileSdkVersion 8
+	compileSdkVersion 31
 	buildToolsVersion "19.1"
 
 	sourceSets {
@@ -114,6 +114,7 @@ android {
 		versionCode computeVersionNumber()
 		versionName computeVersionName()
 		applicationId "com.smartwalkietalkie.android.t9"
+		targetSdkVersion 31
 	}
 
 	signingConfigs {
