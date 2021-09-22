@@ -251,9 +251,8 @@ public class TraditionalT9 extends InputMethodService implements
 		super.onStartInput(attribute, restarting);
 
 		if (!BuildConfig.DEBUG) {
-			if (!Build.MODEL.toLowerCase().equals("p-one")
-					&& !Build.MODEL.toLowerCase().equals("lm180")
-					&& !Build.MODEL.toLowerCase().equals("teams")) {
+			if (!Build.MODEL.toLowerCase().startsWith("voiceping")
+					&& !Build.MODEL.toLowerCase().equals("lm180")) {
 				Toast.makeText(getApplicationContext(), "Incompatible with " + Build.MODEL + ". Please use other keyboard.", Toast.LENGTH_LONG).show();
 				return;
 			}
