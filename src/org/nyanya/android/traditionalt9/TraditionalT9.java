@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.KeyboardView;
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.InputType;
@@ -248,6 +249,22 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onStartInput(EditorInfo attribute, boolean restarting) {
 		super.onStartInput(attribute, restarting);
+
+		if (!BuildConfig.DEBUG) {
+			if (!Build.MODEL.toLowerCase().startsWith("voiceping")
+					&& !Build.MODEL.toLowerCase().equals("lm180")) {
+				Toast.makeText(getApplicationContext(), "Incompatible with " + Build.MODEL + ". Please use other keyboard.", Toast.LENGTH_LONG).show();
+				return;
+			}
+		}
+
+		// this will trigger dictionary load (if it's not loaded yet)
+		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		if (!pref.isDictionaryLoadedFirstTime()) {
+			launchOptions();
+			return;
+		}
+
 		currentInputConnection = getCurrentInputConnection();
 		//Log.d("T9.onStartInput", "INPUTTYPE: " + attribute.inputType + " FIELDID: " + attribute.fieldId +
 		//	" FIELDNAME: " + attribute.fieldName + " PACKAGE NAME: " + attribute.packageName);
@@ -581,9 +598,6 @@ public class TraditionalT9 extends InputMethodService implements
 				keyCode == KeyEvent.KEYCODE_9 || keyCode == KeyEvent.KEYCODE_POUND || keyCode == KeyEvent.KEYCODE_STAR) {
 			event.startTracking();
 			return true;
-		} else {// KeyCharacterMap.load(KeyCharacterMap.BUILT_IN_KEYBOARD).getNumber(keyCode)
-			// Log.w("onKeyDown", "Unhandled Key: " + keyCode + "(" +
-			// event.toString() + ")");
 		}
 		Log.w("onKeyDown", "Unhandled Key: " + keyCode + "(" + event.toString() + ")");
 		commitReset();
@@ -647,15 +661,8 @@ public class TraditionalT9 extends InputMethodService implements
 			}
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_STAR) {
-			if (mKeyMode != MODE_NUM) {
-				if (mLangsAvailable.length > 1) {
-					nextLang();
-				} else {
-					showSmileyPage(); // TODO: replace with lang select if lang thing
-				}
-				return true;
-			}
-
+			nextKeyMode();
+			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_SOFT_LEFT) {
 			if (interfacehandler != null) {
 				interfacehandler.setPressed(keyCode, false);
@@ -760,6 +767,9 @@ public class TraditionalT9 extends InputMethodService implements
 				showWindow(true);
 			}
 			onKey(keyCode, null);
+			return true;
+		} else if (keyCode == KeyEvent.KEYCODE_0 && mKeyMode != MODE_NUM) {
+			showSymbolPage();
 			return true;
 		} else if (keyCode == KeyEvent.KEYCODE_0 || keyCode == KeyEvent.KEYCODE_1 || keyCode == KeyEvent.KEYCODE_2
 				|| keyCode == KeyEvent.KEYCODE_3 || keyCode == KeyEvent.KEYCODE_4 || keyCode == KeyEvent.KEYCODE_5 ||

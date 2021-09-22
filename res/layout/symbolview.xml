@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:gravity="center_horizontal"
@@ -18,13 +19,14 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
-			android:background="@drawable/key_one"
+			android:background="@drawable/key_1"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="@color/key_text"
-			android:textSize="30sp" />
+			android:textSize="30sp"
+			tools:text=":))" />
 
 		<TextView
 			android:id="@+id/text_keytwo"
@@ -32,26 +34,28 @@
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
 			android:layout_centerInParent="false"
-			android:background="@drawable/key_two"
+			android:background="@drawable/key_2"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="@color/key_text"
-			android:textSize="30sp" />
+			android:textSize="30sp"
+			tools:text="2"/>
 
 		<TextView
 			android:id="@+id/text_keythree"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentRight="true"
-			android:background="@drawable/key_three"
+			android:background="@drawable/key_3"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="@color/key_text"
-			android:textSize="30sp" />
+			android:textSize="30sp"
+			tools:text="3"/>
 
 	</RelativeLayout>
 
@@ -67,7 +71,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
-			android:background="@drawable/key_four"
+			android:background="@drawable/key_4"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -80,7 +84,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
-			android:background="@drawable/key_five"
+			android:background="@drawable/key_5"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -93,7 +97,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentRight="true"
-			android:background="@drawable/key_six"
+			android:background="@drawable/key_6"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -115,7 +119,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
-			android:background="@drawable/key_seven"
+			android:background="@drawable/key_7"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -128,7 +132,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
-			android:background="@drawable/key_eight"
+			android:background="@drawable/key_8"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -141,7 +145,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentRight="true"
-			android:background="@drawable/key_nine"
+			android:background="@drawable/key_9"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"
@@ -176,7 +180,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
-			android:background="@drawable/key_zero"
+			android:background="@drawable/key_0"
 			android:clickable="true"
 			android:focusable="true"
 			android:gravity="center"

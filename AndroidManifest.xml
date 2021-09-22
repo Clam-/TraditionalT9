@@ -37,12 +37,16 @@
 
         <activity
             android:name="org.nyanya.android.traditionalt9.TraditionalT9Settings"
-            android:label="@string/traditionalt9_settings" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+            android:label="@string/traditionalt9_settings"
+			android:launchMode="singleTask">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
         </activity>
-        <activity
+
+		<activity
             android:theme="@android:style/Theme.Dialog"
             android:name="org.nyanya.android.traditionalt9.AddWordAct"
             android:label="@string/title_activity_add_word"

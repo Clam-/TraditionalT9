@@ -2,11 +2,19 @@ import groovy.swing.SwingBuilder
 buildscript {
 	repositories {
 		mavenCentral()
+		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:1.5.0'
+		classpath 'com.android.tools.build:gradle:3.2.0'
 	}
 }
+allprojects {
+	repositories {
+		google()
+		jcenter()
+	}
+}
+
 apply plugin: 'android'
 
 dependencies {
@@ -33,7 +41,7 @@ def execThing ( String cmdStr ) {
 
 def computeVersionName = { ->
 
-	String ver = "git-source"
+	String ver = "vp-1"
 	try {
 		if (execThing(" git status -z").toString().trim().equals("")) {
 			return "git-" + execThing(' git log -1 --format="%h"').toString().trim()
@@ -61,20 +69,8 @@ def saveProps(Properties props) {
 	props.store(new FileOutputStream(new File("t9build.properties")), null)
 }
 
-// -PincrementBuildNumber assembleRelease
-def computeVersionNumber = { ->
-	Properties props = getProps()
-	int verNum = Integer.valueOf(props.getProperty("verNum", "0"))
-	if (project.hasProperty('incrementBuildNumber')) {
-		verNum++
-	}
-	props.setProperty("verNum", String.valueOf(verNum))
-	saveProps(props)
-	return verNum
-}
-
 android {
-	compileSdkVersion 8
+	compileSdkVersion 31
 	buildToolsVersion "19.1"
 
 	sourceSets {
@@ -89,7 +85,7 @@ android {
 		}
 
 		// Move the tests to tests/java, tests/res, etc...
-		instrumentTest.setRoot('tests')
+		androidTest.setRoot('tests')
 
 		// Move the build types to build-types/<type>
 		// For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -103,31 +99,19 @@ android {
 	}
 
 	defaultConfig {
-		versionCode computeVersionNumber()
+		versionCode 11
 		versionName computeVersionName()
+		applicationId "com.smartwalkietalkie.android.t9"
+		targetSdkVersion 31
 	}
 
-	// http://stackoverflow.com/a/19130098
 	signingConfigs {
 		release {
-			storeFile file(System.getenv("KEYSTORE"))
-			storePassword ''
-			keyAlias System.getenv("KEYALIAS")
-			keyPassword ''
-		}
-	}
-
-	buildTypes {
-		release {
-			signingConfig android.signingConfigs.release
-			// http://stackoverflow.com/a/24650026
-			applicationVariants.all { variant ->
-				variant.outputs.each { output ->
-					output.outputFile = new File(output.outputFile.parent,
-							output.outputFile.name.replace("-release", "-" + android.defaultConfig.versionName)
-					)
-				}
-			}
+			storeFile file('./t9voiceping')
+			storePassword 't9voiceping'
+			keyAlias = 't9voiceping'
+			keyPassword 't9voiceping'
+//			organization 'smartwalkietalkie.com'
 		}
 	}
 }
@@ -149,44 +133,3 @@ task getDictSizes {
 
 preBuild.dependsOn getDictSizes
 preBuild.mustRunAfter getDictSizes
-
-// https://www.timroes.de/2014/01/19/using-password-prompts-with-gradle-build-files/
-def getPass(String msg) {
-	def pass = ''
-	if(System.console() == null) {
-		new SwingBuilder().edt {
-			dialog(modal: true, // Otherwise the build will continue running before you closed the dialog
-					title: 'Enter password', // Dialog title
-					alwaysOnTop: true, // pretty much what the name says
-					resizable: false, // Don't allow the user to resize the dialog
-					locationRelativeTo: null, // Place dialog in center of the screen
-					pack: true, // We need to pack the dialog (so it will take the size of it's children)
-					show: true // Let's show it
-			) {
-				vbox { // Put everything below each other
-					label(text: msg)
-					input = passwordField()
-					button(defaultButton: true, text: 'OK', actionPerformed: {
-						pass = new String(input.password); // Set pass variable to value of input field
-						dispose(); // Close dialog
-					})
-				} // vbox end
-			} // dialog end
-		} // edt end
-	} else {
-		pass = System.console().readPassword("\nPlease enter key passphrase: ")
-		pass = new String(pass)
-	}
-
-	if(pass.size() <= 0) {
-		throw new InvalidUserDataException("You must enter a password to proceed.")
-	}
-	return pass
-}
-
-gradle.taskGraph.whenReady { taskGraph ->
-	if(taskGraph.hasTask(':assembleRelease')) {
-		android.signingConfigs.release.storePassword = getPass("Please enter Key Store passphrase:")
-		android.signingConfigs.release.keyPassword = getPass("Please enter Key passphrase:")
-	} // end if has task
-} // end whenReady

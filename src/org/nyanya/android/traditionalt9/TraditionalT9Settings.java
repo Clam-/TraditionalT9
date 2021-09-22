@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DatabaseUtils.InsertHelper;
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -501,6 +503,12 @@ public class TraditionalT9Settings extends ListActivity implements
 			} else {
 				finishAndShowError(pd, result, R.string.pref_load_title);
 			}
+
+			final AppSharedPreferences pref = new AppSharedPreferences(TraditionalT9Settings.this);
+			if (!pref.isDictionaryLoadedFirstTime()) {
+				pref.setIsDictionaryLoadedFirstTimePref(true);
+				TraditionalT9Settings.this.finishActivity(0);
+			}
 		}
 	}
 
@@ -705,6 +713,14 @@ public class TraditionalT9Settings extends ListActivity implements
 		setListAdapter(settingitems);
 		mContext = this;
 
+		loadDictForFirstTime();
+	}
+
+	void loadDictForFirstTime() {
+		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		if (!pref.isDictionaryLoadedFirstTime()) {
+			preloader(R.string.pref_loadingdict, true, false);
+		}
 	}
 
 	@Override
@@ -727,6 +743,10 @@ public class TraditionalT9Settings extends ListActivity implements
 			if (msg != 0) {
 				Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 			}
+		} else if (s.id.equals("enableT9")) {
+			final Intent enableIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+			enableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			this.startActivity(enableIntent);
 		}
 		else
 			s.clicked(mContext);
