@@ -38,6 +38,8 @@
         <activity
             android:name="org.nyanya.android.traditionalt9.TraditionalT9Settings"
             android:label="@string/traditionalt9_settings"
+			android:screenOrientation="portrait"
+			android:configChanges="orientation|keyboardHidden"
 			android:launchMode="singleTask">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
