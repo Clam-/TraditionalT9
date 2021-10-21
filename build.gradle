@@ -98,7 +98,7 @@ android {
 	}
 
 	defaultConfig {
-		versionCode 11
+		versionCode 12
 		versionName computeVersionName()
 		applicationId "com.smartwalkietalkie.android.t9"
 		targetSdkVersion 31
