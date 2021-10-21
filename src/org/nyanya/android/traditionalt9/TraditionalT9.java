@@ -112,6 +112,7 @@ public class TraditionalT9 extends InputMethodService implements
 			interfacehandler = new InterfaceHandler(getLayoutInflater().inflate(R.layout.mainview,
 					null), this);
 		}
+		Log.v(TAG, "onCreate");
 	}
 
 	@Override
