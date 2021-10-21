@@ -379,6 +379,10 @@ public class TraditionalT9 extends InputMethodService implements
 					mEditing = EDITING_NOSHOW;
 				}
 
+				if (!restarting) {
+					mKeyMode = pref.getTypingInputMode();
+				}
+
 				// We also want to look at the current state of the editor
 				// to decide whether our alphabetic keyboard should start out
 				// shifted.
@@ -387,6 +391,11 @@ public class TraditionalT9 extends InputMethodService implements
 
 			default:
 				Log.d("onStartInput", "defaulting");
+
+				if (!restarting) {
+					mKeyMode = pref.getTypingInputMode();
+				}
+
 				// For all unknown input types, default to the alphabetic
 				// keyboard with no special features.
 				updateShiftKeyState(attribute);
