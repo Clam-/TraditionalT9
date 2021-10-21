@@ -12,7 +12,16 @@ public class AppSharedPreferences {
     private final String isDictionaryLoadedFirstTimePref = "isDictionaryLoadedFirstTime";
     /* used key */
 
-    public AppSharedPreferences(Context context) {
+    private static AppSharedPreferences INSTANCE = null;
+
+    public static AppSharedPreferences getInstance(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = new AppSharedPreferences(context.getApplicationContext());
+        }
+        return INSTANCE;
+    }
+
+    private AppSharedPreferences(Context context) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(defaultKeyPref, Context.MODE_PRIVATE);
     }
 

@@ -504,7 +504,7 @@ public class TraditionalT9Settings extends ListActivity implements
 				finishAndShowError(pd, result, R.string.pref_load_title);
 			}
 
-			final AppSharedPreferences pref = new AppSharedPreferences(TraditionalT9Settings.this);
+			final AppSharedPreferences pref = AppSharedPreferences.getInstance(TraditionalT9Settings.this);
 			if (!pref.isDictionaryLoadedFirstTime()) {
 				pref.setIsDictionaryLoadedFirstTimePref(true);
 				TraditionalT9Settings.this.finishActivity(0);
@@ -717,7 +717,7 @@ public class TraditionalT9Settings extends ListActivity implements
 	}
 
 	void loadDictForFirstTime() {
-		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		final AppSharedPreferences pref = AppSharedPreferences.getInstance(this);
 		if (!pref.isDictionaryLoadedFirstTime()) {
 			preloader(R.string.pref_loadingdict, true, false);
 		}

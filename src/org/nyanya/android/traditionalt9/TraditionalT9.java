@@ -27,6 +27,8 @@ import java.util.List;
 public class TraditionalT9 extends InputMethodService implements
 		KeyboardView.OnKeyboardActionListener {
 
+	private static final String TAG = TraditionalT9.class.getSimpleName();
+
 	private CandidateView mCandidateView;
 	private InterfaceHandler interfacehandler = null;
 
@@ -249,6 +251,7 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onStartInput(EditorInfo attribute, boolean restarting) {
 		super.onStartInput(attribute, restarting);
+		Log.v(TAG, "onStartInput");
 
 		if (!BuildConfig.DEBUG) {
 			if (!Build.MODEL.toLowerCase().startsWith("voiceping")
@@ -259,7 +262,7 @@ public class TraditionalT9 extends InputMethodService implements
 		}
 
 		// this will trigger dictionary load (if it's not loaded yet)
-		final AppSharedPreferences pref = new AppSharedPreferences(this);
+		final AppSharedPreferences pref = AppSharedPreferences.getInstance(this);
 		if (!pref.isDictionaryLoadedFirstTime()) {
 			launchOptions();
 			return;
