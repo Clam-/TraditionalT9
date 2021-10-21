@@ -1393,6 +1393,7 @@ public class TraditionalT9 extends InputMethodService implements
 				break;
 		}
 		showStatusIcon(icon);
+		AppSharedPreferences.getInstance(getApplicationContext()).setTypingInputMode(mKeyMode);
 	}
 
 	private void pickSelectedCandidate(InputConnection ic) {
