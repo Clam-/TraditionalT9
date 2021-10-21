@@ -9,7 +9,8 @@ public class AppSharedPreferences {
     private final SharedPreferences sharedPreferences;
 
     /* used key */
-    private final String isDictionaryLoadedFirstTimePref = "isDictionaryLoadedFirstTime";
+    private static final String isDictionaryLoadedFirstTimePref = "isDictionaryLoadedFirstTime";
+    private static final String inputTypingMode = "inputTypingMode";
     /* used key */
 
     private static AppSharedPreferences INSTANCE = null;
@@ -31,5 +32,13 @@ public class AppSharedPreferences {
 
     public void setIsDictionaryLoadedFirstTimePref(boolean loaded) {
         sharedPreferences.edit().putBoolean(isDictionaryLoadedFirstTimePref, loaded).commit();
+    }
+
+    public void setTypingInputMode(int typingInputMode) {
+        sharedPreferences.edit().putInt(inputTypingMode, typingInputMode).commit();
+    }
+
+    public int getTypingInputMode() {
+        return sharedPreferences.getInt(inputTypingMode, TraditionalT9.MODE_LANG);
     }
 }
