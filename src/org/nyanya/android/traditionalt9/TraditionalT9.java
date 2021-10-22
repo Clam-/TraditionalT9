@@ -91,7 +91,7 @@ public class TraditionalT9 extends InputMethodService implements
 	public static final int MODE_TEXT = 1;
 	public static final int MODE_NUM = 2;
 	private static final int[] MODE_CYCLE = { MODE_LANG, MODE_TEXT, MODE_NUM };
-	private int mKeyMode;
+	private static int mKeyMode;
 
 	private InputConnection currentInputConnection = null;
 
@@ -252,7 +252,9 @@ public class TraditionalT9 extends InputMethodService implements
 	@Override
 	public void onStartInput(EditorInfo attribute, boolean restarting) {
 		super.onStartInput(attribute, restarting);
-		Log.v(TAG, "onStartInput");
+
+		final int currentInputType = attribute.inputType & InputType.TYPE_MASK_CLASS;
+		Log.v(TAG, "onStartInput. Restarting:" + restarting + " currentInputType:" + currentInputType + " mKeyMode:" + mKeyMode);
 
 		if (!BuildConfig.DEBUG) {
 			if (!Build.MODEL.toLowerCase().startsWith("voiceping")
@@ -379,9 +381,7 @@ public class TraditionalT9 extends InputMethodService implements
 					mEditing = EDITING_NOSHOW;
 				}
 
-				if (!restarting) {
-					mKeyMode = pref.getTypingInputMode();
-				}
+				mKeyMode = pref.getTypingInputMode();
 
 				// We also want to look at the current state of the editor
 				// to decide whether our alphabetic keyboard should start out
@@ -391,10 +391,7 @@ public class TraditionalT9 extends InputMethodService implements
 
 			default:
 				Log.d("onStartInput", "defaulting");
-
-				if (!restarting) {
-					mKeyMode = pref.getTypingInputMode();
-				}
+				mKeyMode = pref.getTypingInputMode();
 
 				// For all unknown input types, default to the alphabetic
 				// keyboard with no special features.
