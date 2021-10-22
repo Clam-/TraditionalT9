@@ -65,6 +65,8 @@ import java.util.Properties;
 public class TraditionalT9Settings extends ListActivity implements
 		DialogInterface.OnCancelListener {
 
+	private static final String TAG = TraditionalT9Settings.class.getSimpleName();
+
 	AsyncTask<String, Integer, Reply> task = null;
 	final static String dictname = "%s-utf8.txt";
 	final static String userdictname = "user.%s.dict";
@@ -166,7 +168,8 @@ public class TraditionalT9Settings extends ListActivity implements
 
 			pd = new ProgressDialog(TraditionalT9Settings.this);
 			pd.setMessage(getResources().getString(msgid));
-			pd.setOnCancelListener(TraditionalT9Settings.this);
+			pd.setCancelable(false);
+			pd.setCanceledOnTouchOutside(false);
 		}
 
 		private long getDictSizes(boolean internal, boolean restore, String[] dicts) {
