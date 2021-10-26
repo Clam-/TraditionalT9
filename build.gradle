@@ -6,6 +6,7 @@ buildscript {
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.5.4'
 		classpath 'com.google.gms:google-services:4.3.10'
+		classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
 	}
 }
 allprojects {
@@ -17,6 +18,7 @@ allprojects {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 dependencies {
 	compile fileTree(dir: 'libs', include: '*.jar')
@@ -70,6 +72,7 @@ def getProps() {
 
 def saveProps(Properties props) {
 	props.store(new FileOutputStream(new File("t9build.properties")), null)
+	implementation 'com.google.firebase:firebase-crashlytics'
 }
 
 android {
