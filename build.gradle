@@ -4,7 +4,8 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.2.1'
+		classpath 'com.android.tools.build:gradle:3.5.4'
+		classpath 'com.google.gms:google-services:4.3.10'
 	}
 }
 allprojects {
@@ -14,10 +15,13 @@ allprojects {
 	}
 }
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 dependencies {
 	compile fileTree(dir: 'libs', include: '*.jar')
+	implementation platform('com.google.firebase:firebase-bom:28.4.2')
+	implementation 'com.google.firebase:firebase-analytics'
 }
 
 def execThing ( String cmdStr ) {
@@ -112,6 +116,11 @@ android {
 			keyPassword 't9voiceping'
 //			organization 'smartwalkietalkie.com'
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility 1.8
+		targetCompatibility 1.8
 	}
 }
 
