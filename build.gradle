@@ -4,7 +4,9 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.2.0'
+		classpath 'com.android.tools.build:gradle:3.5.4'
+		classpath 'com.google.gms:google-services:4.3.10'
+		classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
 	}
 }
 allprojects {
@@ -14,10 +16,14 @@ allprojects {
 	}
 }
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 dependencies {
 	compile fileTree(dir: 'libs', include: '*.jar')
+	implementation platform('com.google.firebase:firebase-bom:28.4.2')
+	implementation 'com.google.firebase:firebase-analytics'
 }
 
 def execThing ( String cmdStr ) {
@@ -66,6 +72,7 @@ def getProps() {
 
 def saveProps(Properties props) {
 	props.store(new FileOutputStream(new File("t9build.properties")), null)
+	implementation 'com.google.firebase:firebase-crashlytics'
 }
 
 android {
@@ -98,8 +105,8 @@ android {
 	}
 
 	defaultConfig {
-		versionCode 12
-		versionName computeVersionName()
+		versionCode 13
+		versionName "1.1.0"
 		applicationId "com.smartwalkietalkie.android.t9"
 		targetSdkVersion 31
 	}
@@ -112,6 +119,11 @@ android {
 			keyPassword 't9voiceping'
 //			organization 'smartwalkietalkie.com'
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility 1.8
+		targetCompatibility 1.8
 	}
 }
 
