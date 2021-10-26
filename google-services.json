@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "515205886688",
+    "project_id": "t9-keyboard",
+    "storage_bucket": "t9-keyboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515205886688:android:56018b82d36fd70c001685",
+        "android_client_info": {
+          "package_name": "com.smartwalkietalkie.android.t9"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515205886688-vc24l3ni4rhbr3pdqv5d2r54thsse224.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZD3BZN5QQYFWDNjbnuhxBp4cJAvzG95k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515205886688-vc24l3ni4rhbr3pdqv5d2r54thsse224.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
