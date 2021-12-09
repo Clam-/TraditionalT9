@@ -1234,6 +1234,7 @@ public class TraditionalT9 extends InputMethodService implements
 	private boolean handleDPAD(int keyCode, KeyEvent event, boolean keyDown) {
 		// Log.d("handleConsumeDPAD", "keyCode: " + keyCode + " isKeyDown: " +
 		// isKeyDown);
+		resetTimer();
 		if (keyDown) {
 			// track key, if seeing repeat count < 0, start sending this event
 			// and previous to super
@@ -1291,6 +1292,11 @@ public class TraditionalT9 extends InputMethodService implements
 				}
 			}
 		}
+	}
+
+	private void resetTimer() {
+		t9releasehandler.removeCallbacks(mt9release);
+		t9releasehandler.postDelayed(mt9release, T9DELAY);
 	}
 
 	private void commitReset() {
