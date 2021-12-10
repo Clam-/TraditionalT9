@@ -1236,7 +1236,7 @@ public class TraditionalT9 extends InputMethodService implements
 		// isKeyDown);
 		if (keyDown) {
 			if (mSuggestionStrings.size() > 0 || mSuggestionInts.size() > 0) {
-				resetTimer();
+				resetCommitTypedTimer();
 			}
 
 			// track key, if seeing repeat count < 0, start sending this event
@@ -1297,7 +1297,7 @@ public class TraditionalT9 extends InputMethodService implements
 		}
 	}
 
-	private void resetTimer() {
+	private void resetCommitTypedTimer() {
 		t9releasehandler.removeCallbacks(mt9release);
 		t9releasehandler.postDelayed(mt9release, T9DELAY);
 	}
