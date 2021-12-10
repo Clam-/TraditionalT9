@@ -35,8 +35,8 @@ public class TraditionalT9 extends InputMethodService implements
 	private StringBuilder mComposing = new StringBuilder();
 	private StringBuilder mComposingI = new StringBuilder();
 
-	private ArrayList<String> mSuggestionStrings = new ArrayList<String>(10);
-	private ArrayList<Integer> mSuggestionInts = new ArrayList<Integer>(10);
+	private final ArrayList<String> mSuggestionStrings = new ArrayList<String>(10);
+	private final ArrayList<Integer> mSuggestionInts = new ArrayList<Integer>(10);
 	private AbstractList<String> mSuggestionSym = new ArrayList<String>(16);
 
 	private static final int NON_EDIT = 0;
