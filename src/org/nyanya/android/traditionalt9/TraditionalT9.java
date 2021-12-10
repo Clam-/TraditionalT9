@@ -1264,12 +1264,14 @@ public class TraditionalT9 extends InputMethodService implements
 				return super.onKeyUp(keyCode, event);
 			} else {
 				if (mKeyMode != MODE_NUM && mComposing.length() > 0) {
-					if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+					if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN
+					|| (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && mKeyMode == MODE_TEXT)) {
 						mCandidateView.scrollSuggestion(1);
 						if (mSuggestionStrings.size() > mCandidateView.mSelectedIndex)
 							currentInputConnection.setComposingText(mSuggestionStrings.get(mCandidateView.mSelectedIndex), 1);
 						return true;
-					} else if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+					} else if (keyCode == KeyEvent.KEYCODE_DPAD_UP
+					|| (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && mKeyMode == MODE_TEXT)) {
 						mCandidateView.scrollSuggestion(-1);
 						if (mSuggestionStrings.size() > mCandidateView.mSelectedIndex)
 							currentInputConnection.setComposingText(mSuggestionStrings.get(mCandidateView.mSelectedIndex), 1);
@@ -1277,8 +1279,6 @@ public class TraditionalT9 extends InputMethodService implements
 					} else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
 						if (mKeyMode == MODE_LANG) {
 							commitTyped();
-						} else if (mKeyMode == MODE_TEXT) {
-							commitReset();
 						}
 						// getCurrentInputConnection().sendKeyEvent(mDPADkeyEvent);
 						// return super.onKeyUp(keyCode, event);
