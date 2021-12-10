@@ -1235,7 +1235,10 @@ public class TraditionalT9 extends InputMethodService implements
 		// Log.d("handleConsumeDPAD", "keyCode: " + keyCode + " isKeyDown: " +
 		// isKeyDown);
 		if (keyDown) {
-			resetTimer();
+			if (mSuggestionStrings.size() > 0 || mSuggestionInts.size() > 0) {
+				resetTimer();
+			}
+
 			// track key, if seeing repeat count < 0, start sending this event
 			// and previous to super
 			if (event.getRepeatCount() == 0) {
