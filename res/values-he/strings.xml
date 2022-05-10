@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Traditional T9</string>
+    <string name="ime_name">מקלדת T9</string>
+    <string name="ime_number">מספרים</string>
+    <string name="pref_inputmode">מצב קלט ברירת מחדל</string>
+    <string name="pref_inputmode_desc">"מצב ברירת מחדל המשמש להזנת טקסט 'רגילה'"</string>
+    <string name="traditionalt9_settings">הגדרות T9 מסורתיות</string>
+    <string name="main_left_insert">הכנס סמל</string>
+    <string name="main_left_addword">הוסף מילה</string>
+    <string name="main_mid">בוצע</string>
+    <string name="main_mid_commit">לְבַצֵעַ</string>
+    <string name="main_right_upper">מצב מחזור</string>
+    <string name="main_right_lower">אפשרויות</string>
+    <string name="main_left_notfound">להוסיף מילה?</string>
+    <string name="ricon_desc">החזק את אייקון</string>
+    <string name="symbol_next">עמוד הבא</string>
+    <string name="symbol_prev">דף קודם</string>
+    <string name="symbol_insert">הכנס סמל</string>
+    <string name="smiley_insert">הכנס סמיילי</string>
+    <string name="symbol_page">Page: %1$s/%2$s</string>
+
+    <string name="add_word">הוסף מילה</string>
+    <string name="close">סגור</string>
+    <string name="add_word_blank">מילה ריקה לא נוספה.</string>
+    <string name="add_word_badchar"> לא ניתן להוסיף מילה עם תו בלתי ניתן לניתוק עבור %1$s (%2$s).</string>
+    <string name="add_word_exist1">המילה (%1$s) כבר נמצאת ב DB.</string>
+    <string name="add_word_exist2">המילה (%1$s) כבר נמצאת ב DB. עבור %2$s</string>
+    <string name="title_activity_add_word">הוסף מילה</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="database_notready">מסד הנתונים אינו זמין.</string>
+    <string name="database_settings_notready">מסד הנתונים אינו זמין. באמצעות הגדרות ברירת מחדל.</string>
+
+    <string name="updating_database_title">מעדכן מסד נתונים מילון ...</string>
+    <string name="updating_database">מעדכן מסד נתונים מילון, זה עשוי לארוך זמן.</string>
+    <string name="updating_database_done">עדכון מסד הנתונים של מילון הושלם.</string>
+    <string name="updating_database_unavailable">עדכון מסד הנתונים במילון, קלט מילים אינו זמין כרגע.</string>
+
+    <string name="pref_lang_title">תמיכה רב-לשונית ...</string>
+    <string name="pref_help">הצג עזרה</string>
+    <string name="pref_loaddict">טען מילון</string>
+    <string name="pref_loaduserdict">טען מילון משתמשים</string>
+    <string name="pref_nukedict">מילון Nuke</string>
+    <string name="pref_backupdict">מילון גיבוי</string>
+    <string name="pref_restoredict">שחזר מילון</string>
+    <string name="pref_querytest">מבחן שאילתה</string>
+    <string name="pref_testfunc">מבחן func</string>
+
+    <string name="pref_mode_notify">התראות מצב</string>
+    <string name="pref_mode_notify_subtitle">משמש להקצאת שינויים במצב</string>
+
+    <string name="pref_loadingdict">טוען מילון ...</string>
+    <string name="pref_loadinguserdict">טוען מילון משתמשים ...</string>
+    <string name="pref_load_title">טען מילון IME</string>
+    <string name="pref_loadingbackup">משחזר מילון ...</string>
+    <string name="pref_savingbackup">מגבה מילון ...</string>
+    <string name="pref_nukingdict">מוחק מילון ... אנא המתן ...</string>
+    <string name="pref_loaduser_notfound">מילון עבור %1$s לא נמצא. לא טוען.</string>
+
+    <string name="pref_backup_warn">אזהרה: קיים גיבוי קיים של בסיס נתונים. האם אתה רוצה להחליף?</string>
+    <string name="pref_backup_title">גבה מסד נתונים IME</string>
+    <string name="pref_backup_noext">שגיאה: אין אחסון חיצוני זמין לגיבוי. הגיבוי לא יימשך.</string>
+    <string name="pref_restore_warn">ערכי בסיסי נתונים לגיבוי יחליפו רשומות בסיסיות קיימות. רשומות שלא בגיבוי יישמרו. אם זו אינה התנהגות רצויה בחר "\"%1$s"\" לפני שתבחר באפשרות זו.</string>
+    <string name="pref_restore_title">שחזר מסד הנתונים IME</string>
+    <string name="pref_restore_noext">שגיאה: אין אחסון חיצוני זמין לשחזור. השחזור לא יימשך.</string>
+    <string name="pref_restore_nofile">שגיאה: קובץ הגיבוי לא נמצא.</string>
+    <string name="pref_nuke_warn">אזהרה: פעולה זו תמחק את כל המילון שלך. האם אתה מקווה להמשיך?</string>
+    <string name="pref_nuke_title">מחק מילון IME</string>
+    <string name="pref_reloadKeys">טען מחדש את מפת ה- Key</string>
+    <string name="pref_reloadKeysSum">כפה מחדש טעינה של עקיפות מיפוי מפתחות</string>
+    <string name="pref_reloadKeysDone">טען מחדש שלם.</string>
+    <string name="pref_reloadKeysDoneWE">טען מחדש עם השגיאות (בדוק את logcat.)</string>
+    <string name="pref_reloadKeysNoFile">לא נמצא קובץ keymap.txt.</string>
+    <string name="pref_keyRemap">תרגם מפתחות</string>
+    <string name="pref_keyRemapSum">אפשר לשלוח מפתחות מתורגמים לאפליקציות, אחרת המפתח למקלדת מיועד ל- IME בלבד.</string>
+    <string name="pref_spaceOnZero">רווח על מקש 0</string>
+
+    <string name="hello_world">שלום עולם!</string>
+
+</resources>
