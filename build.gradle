@@ -69,7 +69,7 @@ def saveProps(Properties props) {
 // -PincrementBuildNumber assembleRelease
 def computeVersionNumber = { ->
 	Properties props = getProps()
-	int verNum = Integer.valueOf(props.getProperty("verNum", "1"))
+	int verNum = Integer.valueOf(props.getProperty("verNum", "0"))
 	if (project.hasProperty('incrementBuildNumber')) {
 		verNum++
 	}
