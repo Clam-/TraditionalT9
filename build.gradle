@@ -79,7 +79,7 @@ def computeVersionNumber = { ->
 }
 
 android {
-	compileSdkVersion 28
+	compileSdkVersion 30
 	buildToolsVersion "32.0.0"
 
 	sourceSets {
@@ -104,7 +104,8 @@ android {
 	}
 
 	defaultConfig {
-		minSdkVersion 28
+		minSdkVersion 19
+		targetSdk 30
 		versionCode computeVersionNumber()
 		versionName computeVersionName()
 	}
