@@ -4,6 +4,7 @@
     android:versionCode="4"
     android:versionName="git" >
 
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-configuration
 		android:reqFiveWayNav="true"
