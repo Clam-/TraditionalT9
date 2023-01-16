@@ -1,0 +1,18 @@
+Title 
+Traditional T9 Keypad IME
+
+
+Full description
+Método de entrada predictivo T9 usando su teclado numérico de botones físicos. No es un teclado en pantalla.
+Solo tiene sentido en un teléfono con teclado numérico de botones físicos.
+Solo permite escribir con teclado numérico de botones físicos.
+Vea el sitio web para ayuda y soporte.
+
+Soporte Multillingue (Inglés, Ruso, Alemán, Frances y Español)
+
+
+Short description
+Entrada de texto predictiva T9 usando su el teclado numérico de botones físicos de su teléfono! (Inglés, Ruso, Alemán, Frances y Español)
+
+
+Vea github para la historia y más informacion.
