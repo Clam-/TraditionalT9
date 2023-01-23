@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="pref_inputmode_entries">
+		<item>מילון</item>
+		<item>טקסט</item>
+		<item>מספר</item>
+	</string-array>
+	<integer-array translatable="false" name="pref_inputmode_values">
+		<item>@integer/INPUT_DICT</item>
+		<item>@integer/INPUT_TEXT</item>
+		<item>@integer/INPUT_NUM</item>
+	</integer-array>
+
+	<string-array name="pref_lang_titles">
+		<item>אנגלית</item>
+		<item>רוסית</item>
+		<item>גרמנית</item>
+		<item>צרפתית</item>
+		<item>איטלקית</item>
+		<item>אוקראינית</item>
+		<item>עברית</item>
+	</string-array>
+	<!--pref_lang_titles pair with pref_lang_values -->
+	<integer-array translatable="false" name="pref_lang_values">
+		<item>@integer/LANG_EN</item>
+		<item>@integer/LANG_RU</item>
+		<item>@integer/LANG_DE</item>
+		<item>@integer/LANG_FR</item>
+		<item>@integer/LANG_IT</item>
+		<item>@integer/LANG_UK</item>
+		<item>@integer/LANG_HE</item>
+	</integer-array>
+
+	<string-array name="capsMode">
+		<item>אותיות קטנות</item>
+		<item>אות גדולה ראשונה</item>
+		<item>אותיות גדולות</item>
+	</string-array>
+
+	<string-array name="keyMode">
+		<item>מילון</item>
+		<item>טקסט</item>
+		<item>מספר</item>
+	</string-array>
+
+	<string-array name="smileyContentDescription">
+		<item> חיוך </item>
+		<item> ליצן </item>
+		<item> Sharp grin </item>
+		<item> חתול </item>
+		<item> חצי אף </item>
+		<item> שמחה לאיד </item>
+		<item> Big eye sharp grin </item>
+		<item> Big eye smile </item>
+		<item> Cheeky smile </item>
+		<item> צוחק </item>
+
+		<item> Bug eye laughing </item>
+		<item> Laughing with eyes closed </item>
+		<item> Big eye laughing </item>
+		<item> Glasses pointy nose laughing </item>
+		<item> Pointed hat smile </item>
+		<item> Frown </item>
+		<item> עצוב </item>
+		<item> Disheartened </item>
+		<item> ליצן עצוב </item>
+		<item> Sad cheeky </item>
+
+		<item> בוכה </item>
+		<item> צוחק עד דמעות </item>
+		<item> Expletive </item>
+		<item> Shocked frown </item>
+		<item> Bug eye\'d frown </item>
+		<item> עצוב עם עינים עצומות </item>
+		<item> בוכה בפה פתוח </item>
+		<item> Frown with mouth open </item>
+		<item> מזועזע </item>
+		<item> מופתע </item>
+
+		<item> נשיקה </item>
+		<item> Winking smile </item>
+		<item> Winking laugh </item>
+		<item> Cheeky tongue out </item>
+		<item> מוציא לשון </item>
+		<item> Teasing </item>
+		<item> Big eye\'d tongue out </item>
+		<item> Annoyed </item>
+		<item> סקפטי </item>
+		<item> Undecided </item>
+
+		<item> מבולבל </item>
+		<item> עינים עצומות </item>
+		<item> Unimpressed </item>
+		<item> Bashful </item>
+		<item> פה סגור </item>
+		<item> מצונזר </item>
+		<item> בנקאי </item>
+		<item> Very big sad mouth </item>
+		<item> Mischievous/sarcasm </item>
+		<item> פנים חמוצות </item>
+
+		<item> חתול תמים </item>
+		<item> חיוך תמים </item>
+		<item> קריצה מרושעת </item>
+		<item> גיכוח מרושע </item>
+		<item> Shifty eyes </item>
+		<item> Party hat smile </item>
+		<item> Arms up cheering </item>
+		<item> לב </item>
+		<item> לב שבור </item>
+		<item> חתול עם עינים גדולות </item>
+	</string-array>
+</resources>

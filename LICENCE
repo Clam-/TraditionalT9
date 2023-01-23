@@ -2,3 +2,7 @@ All code provided is placed in the Public Domain unless stated in file otherwise
 No liability is assumed or granted for any use of provided code.
 
 Do what you want.
+
+The file assets/he-utf8.txt is taken from https://github.com/eyaler/hebrew_wordlists/blob/main/all_append_fatverb.txt,
+and falls under the original file's AGPL license.
+
